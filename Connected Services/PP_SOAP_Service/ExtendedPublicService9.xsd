@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Communication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Communication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" />
+  <xs:complexType name="ArrayOfBusinessProcessShort">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessProcessShort" nillable="true" type="tns:BusinessProcessShort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessProcessShort" nillable="true" type="tns:ArrayOfBusinessProcessShort" />
+  <xs:complexType name="BusinessProcessShort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessProcessId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="BusinessProcessType" type="q1:BusinessProcessType" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ExpirationDate" nillable="true" type="q2:DateTimeOffset" />
+      <xs:element minOccurs="0" name="FacetConfigurationId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LinkToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MailingUrl" nillable="true" type="xs:anyURI" />
+      <xs:element minOccurs="0" name="MailingUrlForDownload" nillable="true" type="xs:anyURI" />
+      <xs:element minOccurs="0" name="MailingUrlsForDownload" nillable="true" type="tns:ArrayOfBusinessProcessLink" />
+      <xs:element minOccurs="0" name="MailingUrlsForView" nillable="true" type="tns:ArrayOfBusinessProcessLink" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" minOccurs="0" name="SelectedAssets" nillable="true" type="q3:ArrayOfAssetSelection" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessProcessShort" nillable="true" type="tns:BusinessProcessShort" />
+  <xs:complexType name="ArrayOfBusinessProcessLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessProcessLink" nillable="true" type="tns:BusinessProcessLink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessProcessLink" nillable="true" type="tns:ArrayOfBusinessProcessLink" />
+  <xs:complexType name="BusinessProcessLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="BusinessProcessUrl" nillable="true" type="xs:anyURI" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessProcessLink" nillable="true" type="tns:BusinessProcessLink" />
+</xs:schema>

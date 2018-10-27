@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UserGroupItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClaimGroups" nillable="true" type="tns:ArrayOfClaimGroup" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsGuestGroup" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LdapSecurityGroups" nillable="true" type="tns:ArrayOfLdapSecurityGroup" />
+      <xs:element minOccurs="0" name="NeedsAllRights" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NeedsAllUserRights" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfUserGroupTranslation" />
+      <xs:element minOccurs="0" name="UserGroup" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupItem" nillable="true" type="tns:UserGroupItem" />
+  <xs:complexType name="ArrayOfClaimGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClaimGroup" nillable="true" type="tns:ClaimGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClaimGroup" nillable="true" type="tns:ArrayOfClaimGroup" />
+  <xs:complexType name="ClaimGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GroupSid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityProviderId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserGroups2ClaimGroupId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClaimGroup" nillable="true" type="tns:ClaimGroup" />
+  <xs:complexType name="ArrayOfLdapSecurityGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LdapSecurityGroup" nillable="true" type="tns:LdapSecurityGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLdapSecurityGroup" nillable="true" type="tns:ArrayOfLdapSecurityGroup" />
+  <xs:complexType name="LdapSecurityGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecurityGroupDistinguishedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserGroup2LdapSecurityGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LdapSecurityGroup" nillable="true" type="tns:LdapSecurityGroup" />
+  <xs:complexType name="ArrayOfUserGroupTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroupTranslation" nillable="true" type="tns:UserGroupTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGroupTranslation" nillable="true" type="tns:ArrayOfUserGroupTranslation" />
+  <xs:complexType name="UserGroupTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserGroupTranslationId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupTranslation" nillable="true" type="tns:UserGroupTranslation" />
+</xs:schema>

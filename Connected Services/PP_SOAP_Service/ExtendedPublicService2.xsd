@@ -1,0 +1,1615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.LogicalOperation" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/VIT.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/VIT.Common.AvRendering.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" />
+  <xs:complexType name="ExtendedAssetFilter">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The assetFilter is a set of parameters, that define which assets are returned from &lt;see cref="M:FacadeServiceContract.IAssetService.GetAssets()" /&gt;&lt;/para&gt;
+            &lt;/summary&gt;
+            &lt;remarks&gt;
+            &lt;c&gt;Example&lt;/c&gt;
+            &lt;code&gt;ExtendedAssetFilter extendedAssetFilter = new ExtendedAssetFilter()
+            {
+             DesiredMetadataLanguage = ApplicationLanguage.English,
+             Limit                   = 10,
+             MediaTypeIds            = new List&amp;lt;int&amp;gt; { 8, 9, 10 },
+             SortInfos               = new List&amp;lt;SortInfo&amp;gt; { new SortInfo() { SortField = "AssetId", SortDirection = SortDirection.Asc } },
+             SimpleSearchString      = "mail",
+             StartRow                = 100,
+             VersionTypeIds          = new List&amp;lt;int&amp;gt; { 1, 4 }
+            };
+            &lt;/code&gt;
+            &lt;/remarks&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetFilter">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.LogicalOperation" minOccurs="0" name="AssetContainerSearchOperation" nillable="true" type="q1:AssetContainerLogicalOperation">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+             &lt;para&gt;Optional. Define from which asset containers to get assets.&lt;/para&gt;
+             &lt;para&gt;&lt;c&gt;See the general API docu overview for further examples!&lt;/c&gt;&lt;/para&gt;
+             &lt;code&gt;// EXAMPLE: Get assets from asset container id 123 plus all sub-containers:
+             .
+             List&amp;lt;AssetContainerComparisonOperation&amp;gt; assetContainerComparisonOperations =
+             .  new List&amp;lt;AssetContainerComparisonOperation&amp;gt;() 
+             .    {new AssetContainerIncludeOperation() {AssetContainerId = 123, IncludeSubAssetContainers = true}};
+             .
+             AssetContainerOrOperation assetContainerSearchOperation = new AssetContainerOrOperation() 
+             .  {ComparisonOperations = assetContainerComparisonOperations};
+            .
+             ExtendedAssetFilter extendedAssetFilter = new ExtendedAssetFilter()
+             {
+             .  AssetContainerSearchOperation = assetContainerSearchOperation,
+             .  other parameters ..
+             }
+             &lt;/code&gt;
+             &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssetTypeIds" nillable="true" type="q2:ArrayOfint">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. List of the asset type ids for which the assets are returned, e.g. if you wish to get only pdfs and bitmap images.&lt;/para&gt;
+            &lt;para&gt;Asset types are e.g. "Unknown", "Bitmap", "VectorGraphic", "InterchangeDocument", "TextDocument" ... etc. Unlike media types they cannot be customized.&lt;/para&gt;
+            &lt;para&gt;Default: all&lt;/para&gt;
+            &lt;code&gt;AssetTypeIds = new List&amp;lt;int&amp;gt; {2, 6, 20}&lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Limit" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. The maximal number of assets returned. Default is unlimited.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MediaTypeIds" nillable="true" type="q3:ArrayOfint">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. List of the media type ids for which the assets are returned, e.g. if you wish to get only images and movies.&lt;/para&gt;
+            &lt;para&gt;Media types are customized sets of asset types, e.g. "Images", "Office" and "Multimedia".&lt;/para&gt;
+            &lt;para&gt;Default: all&lt;/para&gt;
+            &lt;code&gt;MediaTypeIds = new List&amp;lt;int&amp;gt; {1,4,3}&lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ReturnMediaTypeCounts" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, MediaTypeCounts, an array with the numbers of all assets belonging to a certain media type, is returned.&lt;/para&gt;
+            &lt;para&gt;For performance reasons, this paramter should be set to false if not needed. Default: false&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SearchDesiredMetadataLanguageOnly" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, a search is done only within language specific metadata. Default: false.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SearchOnlyDeletedAssets" nillable="true" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.LogicalOperation" minOccurs="0" name="SearchOperation" nillable="true" type="q4:LogicalOperation">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+             &lt;para&gt;Optional. Define search parameters for a complex search.&lt;/para&gt;
+             &lt;para&gt;&lt;c&gt;See the general API docu overview for further examples!&lt;/c&gt;&lt;/para&gt;
+             &lt;para&gt;See &lt;see cref="T:ComparisonOperation.ComparisonOperation" /&gt; for available operators.&lt;/para&gt;
+             &lt;code&gt;// EXAMPLE: Get asset with AssetId 111:
+             .
+             List&amp;lt;ComparisonOperation&amp;gt; comparisonOperations = new List&amp;lt;ComparisonOperation&amp;gt;();
+             comparisonOperations.Add(new NumericEqualOperation() 
+             .  {FieldName = "AssetId", EqualNumeric = 111});
+             .
+             AndOperation searchOperation = new AndOperation()
+             .  {ComparisonOperations = comparisonOperations};
+             .
+             ExtendedAssetFilter extendedAssetFilter = new ExtendedAssetFilter()
+             {
+             .  SearchOperation = searchOperation,
+             .  other parameters ..
+             }
+             &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SimpleSearchString" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Use simple search, if you wish to search within all fields for a simple string.&lt;/para&gt;
+            &lt;code&gt;
+            ExtendedAssetFilter extendedAssetFilter = new ExtendedAssetFilter()
+            {
+            .  SimpleSearchString = "Switzerland",
+            .
+            .  other parameters
+            };
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SortInfos" nillable="true" type="tns:ArrayOfSortInfo">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Sort parameters: the asset field and the direction (ascending or descending).&lt;/para&gt;
+            &lt;para&gt;&lt;c&gt;This is the only required parameter!&lt;/c&gt;&lt;/para&gt;
+            &lt;para&gt;You may define several sort infos, e.g. AssetName asc, AssetId desc.&lt;/para&gt;
+            &lt;code&gt;List&amp;lt;SortInfo&amp;gt; sortInfos = new List&amp;lt;SortInfo&amp;gt;();
+            sortInfos.Add(new SortInfo() { SortField = "AssetName", SortDirection = SortDirection.Asc });
+            sortInfos.Add(new SortInfo() { SortField = "AssetId", SortDirection = SortDirection.Desc });
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="StartRow" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. The row in the query, from where on to return the assets. Default is 0.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UnassignedAssetsOnly" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, only assets which are in no category are returned. Default: false.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VersionTypeIds" nillable="true" type="q5:ArrayOfint">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Returns for each asset in the collection in addition to the other data the assigned versions (e.g. language versions).&lt;/para&gt;
+            &lt;para&gt;This is not a filter for the assets, thus has no impact on the number of assets returned by the query.&lt;/para&gt;
+            &lt;code&gt;VersionTypeIds = new List&amp;lt;int&amp;gt; { 1, 3 }&lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExtendedAssetFilter" nillable="true" type="tns:ExtendedAssetFilter" />
+  <xs:complexType name="AssetFilter">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AdditionalSelectFields" nillable="true" type="q6:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. A list of the names of additional fields to be returned, e.g. CreationDate, CreatedByUserId, Source ..&lt;/para&gt;
+            &lt;para&gt;By default only technical fields like AssetName, AssetDescription, FileSizeInBytes, FileExtensionId and technical image data etc. are returned, not the fields which contain the content meta data.&lt;/para&gt;
+            &lt;code&gt;AdditionalSelectFields = new List&amp;lt;string&amp;gt; { "Source", "CreationDate", "CreatedByUserId"};&lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BusinessProcessId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Not needed for integrators.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BusinessProcessToken" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Not needed for integrators.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/VIT.Common.DataContract" minOccurs="0" name="DesiredMetadataLanguage" nillable="true" type="q7:ApplicationLanguage">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. The language of the meta data to be returned.&lt;/para&gt;
+            &lt;para&gt;Picturepark allows meta data to be stored in several languages, e.g. in german, english, spanish and russian.&lt;/para&gt;
+            &lt;code&gt;DesiredMetadataLanguage = ApplicationLanguage.English&lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReturnAllLanguages" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If set to true, all languages of passed fields will be returned. Otherwise only desiredMetadataLanguage.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReturnAllQueryAssetIds" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, a list of all asset ids in the query is returned in the AllQueryAssetIds property of the &lt;see cref="T:AssetItemCollection" /&gt;.&lt;/para&gt;
+            &lt;para&gt;These asset ids are not necessarily identical with the assets returned in the AssetItemCollection, e.g. due to the Limit parameter.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetFilter" nillable="true" type="tns:AssetFilter" />
+  <xs:complexType name="ArrayOfSortInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SortInfo" nillable="true" type="tns:SortInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSortInfo" nillable="true" type="tns:ArrayOfSortInfo" />
+  <xs:complexType name="SortInfo">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="SortDirection" nillable="true" type="q8:SortDirection" />
+      <xs:element minOccurs="0" name="SortField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SortInfo" nillable="true" type="tns:SortInfo" />
+  <xs:complexType name="AssetItemCollection">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllQueryAssetIds" nillable="true" type="q9:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A list of all asset ids in the query.&lt;/para&gt;
+            &lt;para&gt;This list is only returned if the param ReturnAllQueryAssetIds in the &lt;see cref="T:AssetFilter" /&gt; is true.&lt;/para&gt;
+            &lt;para&gt;These asset ids are not necessarily identical with the assets items in the Assets property, e.g. due to the Limit parameter.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Assets" nillable="true" type="tns:ArrayOfAssetItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:AssetItem" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MediaTypeCounts" nillable="true" type="q10:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The number of assets per media type in the order of MediaTypeId.&lt;/para&gt;
+            &lt;para&gt;E.g. 111,22,33. 111 assets belong to the first media type (e.g. "all"), 22 to the second and 33 to the third etc.&lt;/para&gt;
+            &lt;para&gt;Please note: as with TotalAssets, these figures refer to the whole query, not just to the assets returned.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TotalAssets" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The number of assets in the query.&lt;/para&gt;
+            &lt;para&gt;Please note: this figure is not necessarily identical with the number of AssetItems.&lt;/para&gt;
+            &lt;para&gt;Both figures may differ, if Limit and/or StartRow are greater 0 in &lt;see cref="T:ExtendedAssetFilter" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetItemCollection" nillable="true" type="tns:AssetItemCollection" />
+  <xs:complexType name="ArrayOfAssetItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetItem" nillable="true" type="tns:AssetItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetItem" nillable="true" type="tns:ArrayOfAssetItem" />
+  <xs:complexType name="AssetItem">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An AssetItem represents the attributes of one asset including relations to other assets.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppliedAssetRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the asset right template. Is ignored, if IsAssetRightTemplateOverridden = true.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AppliedDerivativeRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the derivative right template. Is ignored, if IsDerivativeRightTemplateOverridden = true.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset id.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetRights" nillable="true" type="q11:ArrayOfAssetRight">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:AssetRight" /&gt;s for the current user.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetTypeId" nillable="true" type="q12:AssetType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;In Picturepark, assets are categorized into AssetTypes according to their file extensions.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetVersions" nillable="true" type="tns:ArrayOfAssetVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:AssetVersion" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;In Picturepark, the version logic is implemented as an assignment of one or more assets to a parent asset.&lt;/para&gt;
+            &lt;para&gt;Thus, an asset can either have a parent or be a parent.&lt;/para&gt;
+            &lt;para&gt;&lt;c&gt;AssetVersion&lt;/c&gt; contains the assets, for which it is the parent, while &lt;c&gt;MasterVersions&lt;/c&gt; contain the parents.&lt;/para&gt;
+            &lt;para&gt;Currently, version types are either language versions or slides.&lt;/para&gt;
+            &lt;para&gt;&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AvailableDerivativeDefinitions" nillable="true" type="q13:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all available derivative definitions for this asset, ignoring the Usergroups rights. Needed to order derivatives which the user has no right to download.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Derivatives" nillable="true" type="tns:ArrayOfDerivative">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:Derivative" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;A derivative is an asset which has been created automatically by the system, e.g. a certain image format or a movie.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldSetIds" nillable="true" type="q14:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A list of assigned field set ids.&lt;/para&gt;
+            &lt;para&gt;FieldSetIds define which fields are assigned to an asset. Needed for AssetClasses.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q15:ArrayOfKnownFieldValue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Array of &lt;see cref="T:Configuration.KnownFieldValue" /&gt;s.&lt;/para&gt;
+            &lt;para&gt;This array contains one entry for each field value.&lt;/para&gt;
+            &lt;para&gt;For which fields the values are returned depends on the parameters &lt;c&gt;AdditionalSelectFields&lt;/c&gt; in &lt;see cref="T:ExtendedAssetFilter" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsAssetRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, the applied asset right template is ignored and the rights particularly assigned to this asset are applied.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsDerivativeRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, the applied derivative right template is ignored and the rights particularly assigned to the derivatives are applied.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MasterVersions" nillable="true" type="tns:ArrayOfAssetVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;See above under AssetVersions.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="XmpOutOfSync" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Technical flag concerning the rendering state.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="XmpSyncFailed" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Technical flag concerning the rendering state.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetItem" nillable="true" type="tns:AssetItem" />
+  <xs:complexType name="ArrayOfAssetVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetVersion" nillable="true" type="tns:AssetVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetVersion" nillable="true" type="tns:ArrayOfAssetVersion" />
+  <xs:complexType name="AssetVersion">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Currently an asset version is either a language version or a slide.&lt;/para&gt;
+            &lt;para&gt;&lt;c&gt;Language version:&lt;/c&gt; one or more assets in different languages are assigned to a common master asset, e.g. if you have a pdf brochure in several different languages.&lt;/para&gt;
+            &lt;para&gt;&lt;c&gt;Slide:&lt;/c&gt; One or more slides are assigned to a PowerPoint presentation (from which they have been created).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Asset" nillable="true" type="tns:AssetItem" />
+      <xs:element minOccurs="0" name="AssetVersionId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedByUserId" type="xs:int" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" type="q16:DateTimeOffset" />
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q17:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ParentAssetId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the parent asset. Null, if this version is a master.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The name of the version, e.g. "English" or "French".&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="VersionOptionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VersionTypeId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Versiontypes are e.g. Languages, History, Associated, Presentation etc.&lt;/para&gt;
+            &lt;para&gt;They are individually configurable for each Picturepark. Language usually exists and has the id = 1.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetVersion" nillable="true" type="tns:AssetVersion" />
+  <xs:complexType name="ArrayOfDerivative">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Derivative" nillable="true" type="tns:Derivative" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDerivative" nillable="true" type="tns:ArrayOfDerivative" />
+  <xs:complexType name="Derivative">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A derivative is an asset which has been created automatically by the system, e.g. a certain image format or a movie.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeId" type="xs:int" />
+      <xs:element minOccurs="0" name="FileExtensionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;E.g. "Matterhorn1.jpg".&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileSizeInBytes" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ImageHeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageWidth" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PublicAbsoluteUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;E.g. http://picturepark.vit.local/Public/1/ThumbnailSmall/1031.jpg.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RenderingState" type="q18:RenderingState">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Technical flag concerning the rendering state.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="VideoDurationInSeconds" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="VideoHeight" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoWidth" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Derivative" nillable="true" type="tns:Derivative" />
+  <xs:complexType name="ArrayOfAssetSelection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetSelection" nillable="true" type="tns:AssetSelection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetSelection" nillable="true" type="tns:ArrayOfAssetSelection" />
+  <xs:complexType name="AssetSelection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetSelection" nillable="true" type="tns:AssetSelection" />
+  <xs:complexType name="DownloadOptions">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Defines parameters for a download, see &lt;see cref="M:FacadeServiceContract.IAssetService.Download()" /&gt; for a usage example.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessProcessId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A mailing id. Valid only in combination with a valid MailingToken.&lt;/para&gt;
+            &lt;para&gt;Needed for access rights, does not cause the download to return all assets in a mailing.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BusinessProcessToken" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Token for a business process, must be given in combination with a BusinessProcessId.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreateZip4SingleFile" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt; 
+            &lt;para&gt;If false and the download contains only one file, then the file is not zipped.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="KeepOriginalFileName" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt; 
+            &lt;para&gt;If false the original filename is taken and the configured download filename rules are ignored.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MailingRecipientId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Needed only for logging purposes.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UsagePurpose" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Any text, needed only for logging purposes.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="UserAction" type="q19:UserAction">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Needed for logging purposes. Must be one of &lt;c&gt;DerivativeDownload&lt;/c&gt;, &lt;c&gt;DerivativeView&lt;/c&gt; or &lt;c&gt;AssetReplication&lt;/c&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DownloadOptions" nillable="true" type="tns:DownloadOptions" />
+  <xs:complexType name="Download">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsolutePath" nillable="true" type="xs:string" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="AvailableUntilDate" type="q20:DateTimeOffset" />
+      <xs:element minOccurs="0" name="DownloadFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DownloadToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileSize" type="xs:long" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Download" nillable="true" type="tns:Download" />
+  <xs:complexType name="AssetMetadata">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Represents the metadata of an asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppliedAssetRightTemplateId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the assigned right template.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AppliedDerivativeRightTemplateId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the right template used to define the access rights for the derivative formats.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" minOccurs="0" name="AssetContainerAssignments" nillable="true" type="q21:ArrayOfAssetContainerAssignmentExtended">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:Container.AssetContainerAssignmentExtended" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;An asset can be assigned to many asset containers.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetRights" nillable="true" type="q22:ArrayOfAssetRight">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;array with all &lt;see cref="T:AssetRight" /&gt;s for the current user.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetTypeId" type="q23:AssetType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Bitmap, VectorGraphic, TextDocument, Audio, Video ..&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetVersions" nillable="true" type="tns:ArrayOfAssetVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:AssetVersion" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;This array contains all asset versions which have this asset as a parent.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DerivativeLock" nillable="true" type="tns:DerivativeLock">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;&lt;see cref="T:DerivativeLock" /&gt;. If not null this asset is locked.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Derivatives" nillable="true" type="tns:ArrayOfExtendedDerivative">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all assigned &lt;see cref="T:ExtendedDerivative" /&gt;s to which access rights exist.&lt;/para&gt;
+            &lt;para&gt;Please note: the data for the original are returned independently of access rights in the property OriginalDerivative.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfDocument">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all assigned &lt;see cref="T:Document" /&gt;s.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q24:ArrayOfFieldValue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:Configuration.FieldValue" /&gt;s for this asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsAssetRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, there are more specific access rights defined for this asset and the settings of the AppliedAssetRightTemplateId are ignored.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsDerivativeRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Same logic as with IsAssetRightTemplateOverridden.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MasterVersions" nillable="true" type="tns:ArrayOfAssetVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all master &lt;see cref="T:AssetVersion" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;This array contains all assets which are a parent version for this asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MediaInfos" nillable="true" type="tns:ArrayOfMediaInfo">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A list of &lt;see cref="T:MediaInfo" /&gt;s if the asset is an audio or a video.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OriginalDerivative" nillable="true" type="tns:ExtendedDerivative">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Original &lt;see cref="T:ExtendedDerivative" /&gt;.&lt;/para&gt;
+            &lt;para&gt;The data for the original are always returned, even if there are no access rights to the original.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ParentAsset" nillable="true" type="tns:ArrayOfAssetItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all parent &lt;see cref="T:AssetItem" /&gt;s.&lt;/para&gt;
+            &lt;para&gt;An asset can have more than one parent.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ParentAssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the parent asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReferencedAssets" nillable="true" type="tns:ArrayOfAssetItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:AssetItem" /&gt;s to which this asset refers (from Documents).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReferringAssets" nillable="true" type="tns:ArrayOfAssetItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all &lt;see cref="T:AssetItem" /&gt;s which refer to this asset (from AssetObjects).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="XmpItems" nillable="true" type="tns:ArrayOfXmpItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with &lt;see cref="T:XmpItem" /&gt;s if the asset is an image and metadata mapping is enabled.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetMetadata" nillable="true" type="tns:AssetMetadata" />
+  <xs:complexType name="DerivativeLock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteCheckoutFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="CheckoutReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientComputerName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ClientFileModificationDate" nillable="true" type="q25:DateTimeOffset" />
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" type="q26:DateTimeOffset" />
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeLockId" type="xs:int" />
+      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="DerivativeModificationDate" nillable="true" type="q27:DateTimeOffset" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" minOccurs="0" name="DerivativeModifiedByUser" nillable="true" type="q28:UserCompact" />
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q29:ArrayOfKnownFieldValue" />
+      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q30:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="OriginalDerivativeModificationDate" nillable="true" type="q31:DateTimeOffset" />
+      <xs:element minOccurs="0" name="UrlThumbnailSmall" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeLock" nillable="true" type="tns:DerivativeLock" />
+  <xs:complexType name="ArrayOfExtendedDerivative">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExtendedDerivative" nillable="true" type="tns:ExtendedDerivative" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExtendedDerivative" nillable="true" type="tns:ArrayOfExtendedDerivative" />
+  <xs:complexType name="ExtendedDerivative">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An extended derivative provides more detailed information than the usual derivative.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Derivative">
+        <xs:sequence>
+          <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" type="q32:DateTimeOffset" />
+          <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EpsHeightInPoints" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EpsIsRasterized" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EpsWidthInPoints" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageBitsPerChannel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageBitsPerPixel" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageChannels" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImageColorProfile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImageColorSpaceId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageHasAdobeResourceData" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageHasAlpha" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageHasExifData" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageHasIptcData" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageHasXmpData" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageHeightInCm" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageHeightInInch" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageHorizontalResolution" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageIsExtended" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImageIsIndexed" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ImagePixelFormat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ImageTotalFrames" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageTotalUnspecifiedTiffExtraChannels" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ImageUncompressedSizeInBytes" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="ImageVerticalResolution" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageWidthInCm" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImageWidthInInch" nillable="true" type="xs:double" />
+          <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q33:DateTimeOffset" />
+          <xs:element minOccurs="0" name="Sha1Hash" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ExtendedDerivative" nillable="true" type="tns:ExtendedDerivative" />
+  <xs:complexType name="ArrayOfDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocument" nillable="true" type="tns:ArrayOfDocument" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentId" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentPages" nillable="true" type="tns:ArrayOfDocumentPage" />
+      <xs:element minOccurs="0" name="LargePageImageMaxHeight" type="xs:int" />
+      <xs:element minOccurs="0" name="LargePageImageMaxWidth" type="xs:int" />
+      <xs:element minOccurs="0" name="SmallPageImageMaxHeight" type="xs:int" />
+      <xs:element minOccurs="0" name="SmallPageImageMaxWidth" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Document" nillable="true" type="tns:Document" />
+  <xs:complexType name="ArrayOfDocumentPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentPage" nillable="true" type="tns:DocumentPage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentPage" nillable="true" type="tns:ArrayOfDocumentPage" />
+  <xs:complexType name="DocumentPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetObjects" nillable="true" type="tns:ArrayOfAssetObject" />
+      <xs:element minOccurs="0" name="DocumentId" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentPageId" type="xs:int" />
+      <xs:element minOccurs="0" name="HeightInCm" type="xs:double" />
+      <xs:element minOccurs="0" name="LargePageImageResolution" type="xs:double" />
+      <xs:element minOccurs="0" name="LargePageImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="RotationInDegrees" type="xs:int" />
+      <xs:element minOccurs="0" name="SmallPageImageResolution" type="xs:double" />
+      <xs:element minOccurs="0" name="SmallPageImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidthInCm" type="xs:double" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentPage" nillable="true" type="tns:DocumentPage" />
+  <xs:complexType name="ArrayOfAssetObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetObject" nillable="true" type="tns:AssetObject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetObject" nillable="true" type="tns:ArrayOfAssetObject" />
+  <xs:complexType name="AssetObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AssetObjectId" type="xs:int" />
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetObjectType" type="q34:AssetObjectType" />
+      <xs:element minOccurs="0" name="CommentId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentPageId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HeightInCm" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="JsonSerializedSvgAttributes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkedAssetId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LinkedUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PositionLeftInCm" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PositionTopInCm" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="RelativeFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="WidthInCm" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetObject" nillable="true" type="tns:AssetObject" />
+  <xs:complexType name="ArrayOfMediaInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MediaInfo" nillable="true" type="tns:MediaInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMediaInfo" nillable="true" type="tns:ArrayOfMediaInfo" />
+  <xs:complexType name="MediaInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AudioCount" type="xs:int" />
+      <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/VIT.Common.AvRendering.DataContract" minOccurs="0" name="AudioStreams" nillable="true" type="q35:ArrayOfAudioStream" />
+      <xs:element minOccurs="0" name="Codec" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="DurationInSeconds" type="ser:duration" />
+      <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OverallBitRate" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoCount" type="xs:int" />
+      <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/VIT.Common.AvRendering.DataContract" minOccurs="0" name="VideoStreams" nillable="true" type="q36:ArrayOfVideoStream" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MediaInfo" nillable="true" type="tns:MediaInfo" />
+  <xs:complexType name="ArrayOfXmpItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="XmpItem" nillable="true" type="tns:XmpItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfXmpItem" nillable="true" type="tns:ArrayOfXmpItem" />
+  <xs:complexType name="XmpItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="children" nillable="true" type="tns:ArrayOfXmpItem" />
+      <xs:element minOccurs="0" name="expanded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="leaf" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmpItem" nillable="true" type="tns:XmpItem" />
+  <xs:complexType name="ArrayOfAssetFieldValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetFieldValues" nillable="true" type="tns:AssetFieldValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetFieldValues" nillable="true" type="tns:ArrayOfAssetFieldValues" />
+  <xs:complexType name="AssetFieldValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset id.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldSetIds" nillable="true" type="q37:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The fieldSetIds for this asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q38:ArrayOfFieldValue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Array of field values for this asset.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UrlThumbnailSmall" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The small thumbnail for preview in batch editor.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetFieldValues" nillable="true" type="tns:AssetFieldValues" />
+  <xs:complexType name="ArrayOfDerivativeDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DerivativeDefinition" nillable="true" type="tns:DerivativeDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDerivativeDefinition" nillable="true" type="tns:ArrayOfDerivativeDefinition" />
+  <xs:complexType name="DerivativeDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AudioBitrate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioQuality" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioSamplingFrequency" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioUse4Preview" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AvPresetId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DerivativeDefinition2AssetTypes" nillable="true" type="tns:ArrayOfDerivativeDefinition2AssetType" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="DerivativeType" nillable="true" type="q39:DerivativeType" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IconId" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageColorProfileId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageColorTransformationIntentId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageEncodingOptionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageKeepClippingPath" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ImageResolution" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutputFileExtensionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProvideAsDownload" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RelativeBasePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RenderingActionValues" nillable="true" type="tns:ArrayOfRenderingActionValue" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="TrackUsagePurpose" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfDerivativeDefinitionTranslation" />
+      <xs:element minOccurs="0" name="Use4AssetConversion" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UseGuid4FileName" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UsePublicFileDirectory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UseVideo4Thumbnails" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VideoAudioBitrate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoAudioCodecId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoBitrate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoCodecId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="WriteXmp2File" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeDefinition" nillable="true" type="tns:DerivativeDefinition" />
+  <xs:complexType name="ArrayOfDerivativeDefinition2AssetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DerivativeDefinition2AssetType" nillable="true" type="tns:DerivativeDefinition2AssetType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDerivativeDefinition2AssetType" nillable="true" type="tns:ArrayOfDerivativeDefinition2AssetType" />
+  <xs:complexType name="DerivativeDefinition2AssetType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinition2AssetTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeDefinition2AssetType" nillable="true" type="tns:DerivativeDefinition2AssetType" />
+  <xs:complexType name="ArrayOfRenderingActionValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RenderingActionValue" nillable="true" type="tns:RenderingActionValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRenderingActionValue" nillable="true" type="tns:ArrayOfRenderingActionValue" />
+  <xs:complexType name="RenderingActionValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RenderingActionArgumentValues" nillable="true" type="tns:ArrayOfRenderingActionArgumentValue" />
+      <xs:element minOccurs="0" name="RenderingActionId" type="xs:int" />
+      <xs:element minOccurs="0" name="RenderingActionValueId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RenderingActionValue" nillable="true" type="tns:RenderingActionValue" />
+  <xs:complexType name="ArrayOfRenderingActionArgumentValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RenderingActionArgumentValue" nillable="true" type="tns:RenderingActionArgumentValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRenderingActionArgumentValue" nillable="true" type="tns:ArrayOfRenderingActionArgumentValue" />
+  <xs:complexType name="RenderingActionArgumentValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RenderingActionArgumentId" type="xs:int" />
+      <xs:element minOccurs="0" name="RenderingActionArgumentValueId" type="xs:int" />
+      <xs:element minOccurs="0" name="RenderingActionValueId" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RenderingActionArgumentValue" nillable="true" type="tns:RenderingActionArgumentValue" />
+  <xs:complexType name="ArrayOfDerivativeDefinitionTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DerivativeDefinitionTranslation" nillable="true" type="tns:DerivativeDefinitionTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDerivativeDefinitionTranslation" nillable="true" type="tns:ArrayOfDerivativeDefinitionTranslation" />
+  <xs:complexType name="DerivativeDefinitionTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionTranslationId" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeDefinitionTranslation" nillable="true" type="tns:DerivativeDefinitionTranslation" />
+  <xs:complexType name="ArrayOfUserDerivativeRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserDerivativeRights" nillable="true" type="tns:UserDerivativeRights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserDerivativeRights" nillable="true" type="tns:ArrayOfUserDerivativeRights" />
+  <xs:complexType name="UserDerivativeRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DerivativeDefinitionRights" nillable="true" type="tns:ArrayOfDerivativeDefinitionRights" />
+      <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" minOccurs="0" name="UserGroup" nillable="true" type="q40:UserGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDerivativeRights" nillable="true" type="tns:UserDerivativeRights" />
+  <xs:complexType name="ArrayOfDerivativeDefinitionRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DerivativeDefinitionRights" nillable="true" type="tns:DerivativeDefinitionRights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDerivativeDefinitionRights" nillable="true" type="tns:ArrayOfDerivativeDefinitionRights" />
+  <xs:complexType name="DerivativeDefinitionRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="DerivativeRights" nillable="true" type="q41:ArrayOfDerivativeRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeDefinitionRights" nillable="true" type="tns:DerivativeDefinitionRights" />
+  <xs:complexType name="ArrayOfUserGroupAssetRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroupAssetRights" nillable="true" type="tns:UserGroupAssetRights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGroupAssetRights" nillable="true" type="tns:ArrayOfUserGroupAssetRights" />
+  <xs:complexType name="UserGroupAssetRights">
+    <xs:sequence>
+      <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetRights" nillable="true" type="q42:ArrayOfAssetRight" />
+      <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" minOccurs="0" name="UserGroup" nillable="true" type="q43:UserGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupAssetRights" nillable="true" type="tns:UserGroupAssetRights" />
+  <xs:complexType name="AssetImportOptions">
+    <xs:sequence>
+      <xs:element xmlns:q44="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssetContainerIds" nillable="true" type="q44:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;List of the &lt;c&gt;AssetClass&lt;/c&gt; ids to be assigned to the asset. Not nillable, but the list may be empty.&lt;/para&gt;
+            &lt;para&gt;An AssetClass defines the available attributes of an asset.&lt;/para&gt;
+            &lt;para&gt;It is implemented as a new type of asset container alongside categories.&lt;/para&gt;
+            &lt;para&gt;Category assignments are now an asset field value for an asset field of type ValueAssetContainerAssignment.&lt;/para&gt;
+            &lt;para&gt;See under param FieldValues for an example.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of an AssetRightTemplate.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetVersions" nillable="true" type="tns:ArrayOfAssetVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. List of asset versions.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DerivativeRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of a DerivativeRightTemplate.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q45:ArrayOfFieldValue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;List of field values.&lt;/para&gt;
+            &lt;para&gt;Which field values are required - and must therefore be submitted -  depends on the configuration of this Picturepark.&lt;/para&gt;
+            &lt;para&gt;Please note: categories are defined as a special field value of type ValueAssetContainerAssignment (see code example).&lt;/para&gt;
+            &lt;code&gt;
+            List&amp;lt;FieldValue&amp;gt; fieldValues = new List&amp;lt;FieldValue&amp;gt;
+            {
+            .  new FieldValue {FieldId = 2,  ValueString = "Nebel", LanguageId = 1 },
+            .  new FieldValue {FieldId = 2,  ValueString = "Fog",   LanguageId = 2 },
+            .  new FieldValue {FieldId = 2,  ValueString = "Brume", LanguageId = 3 },
+            .  new FieldValue {FieldId = 6,  FieldOptionId = 289},
+            .  new FieldValue {FieldId = 3,  ValueString = "Carl Meyers" },
+            .  new FieldValue {FieldId = 35, ValueUserShort = new UserShort {UserId = CoreInfo.User.UserId}},
+            };
+            .
+            // Example for the assignment of three categories (111,222,333) to the field 99, which is of type AssetContainerAssignmentExtended:
+            .
+            AssetContainerAssignmentExtended category1 = new AssetContainerAssignmentExtended() { AssetContainerId = 111, AssetContainerType = AssetContainerType.Category};
+            AssetContainerAssignmentExtended category2 = new AssetContainerAssignmentExtended() { AssetContainerId = 222, AssetContainerType = AssetContainerType.Category};
+            AssetContainerAssignmentExtended category3 = new AssetContainerAssignmentExtended() { AssetContainerId = 333, AssetContainerType = AssetContainerType.Category};
+            .
+            List&amp;lt;FieldValue&amp;gt; fieldValues = new List&amp;lt;FieldValue&amp;gt;
+            {
+            .  ..
+            .  new FieldValue {FieldId = 99, ValueAssetContainerAssignment = category1},
+            .  new FieldValue {FieldId = 99, ValueAssetContainerAssignment = category2},
+            .  new FieldValue {FieldId = 99, ValueAssetContainerAssignment = category3},
+            .  ..
+            };
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The file name with extension, needed only for an upload by MTOM.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImportGuid" nillable="true" type="ser:guid">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Needed only for an upload by MTOM.&lt;/para&gt;
+            &lt;code&gt;
+            Guid? guid = null;
+            .
+            using (FileStream fileStream = new FileStream(@"E:\Kaktus.jpg", FileMode.Open))
+            .  guid = PictureparkServiceMtom.UploadFile(fileStream);
+            .
+            ImportGuid = guid,
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImportRelativeFilePath" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Needed only for batch import, which is not available for public webservices.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImportUrl" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The url of the file to be imported, not needed for upload by MTOM.&lt;/para&gt;
+            &lt;para&gt;For an upload by MTOM (recommended) the ImportGuid is needed instead.&lt;/para&gt;
+            &lt;code&gt;
+            ImportUrl = "http://picturepark.com/images/image1234.jpg"
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsAssetRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, the assigned AssetRightTemplateId is ignored and rights specifically assigned to this asset are applied. Default is false.&lt;/para&gt;
+            &lt;para&gt;If true, UserGroupAssetRights must be provided.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsDerivativeRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, the assigned DerivativeRightTemplateId is ignored and rights specifically assigned to this derivative are applied. Default is false.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OnlyCreateOriginalDerivative" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, derivatives are not created (except the original derivative). Default is false.&lt;/para&gt;
+            &lt;para&gt;Needed only in special cases where the user wishes to import his own derivatives.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UserGroupAssetRights" nillable="true" type="tns:ArrayOfUserGroupAssetRights">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The assignment of certain rights for certain groups to this asset.&lt;/para&gt;
+            &lt;para&gt;Needed only if IsAssetRightTemplateOverridden = true.&lt;/para&gt;
+            &lt;code&gt;
+            UserGroupItem userGroup3  = new UserGroupItem { UserGroupId = 3 };
+            UserGroupItem userGroup10 = new UserGroupItem { UserGroupId = 10 };
+            .
+            List&amp;lt;AssetRight&amp;gt; assetRights = new List&amp;lt;AssetRight&amp;gt;
+            {
+            .  AssetRight.List,
+            .  AssetRight.ManageDerivatives,
+            .  AssetRight.ViewMetadata,
+            .  AssetRight.ViewStatistics
+            };
+            .
+            List&amp;lt;UserGroupAssetRights&amp;gt; userGroupAssetRights = new List&amp;lt;UserGroupAssetRights&amp;gt;
+            {
+            .  new UserGroupAssetRights{AssetRights = assetRights, UserGroup = userGroup10},
+            .  new UserGroupAssetRights{AssetRights = assetRights, UserGroup = userGroup3}
+            };
+            .
+            UserGroupAssetRights = userGroupAssetRights
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UserGroupDerivativeRights" nillable="true" type="tns:ArrayOfUserGroupDerivativeRights">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. See under UserGroupAssetRights for a more detailed example for a similar parameter.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetImportOptions" nillable="true" type="tns:AssetImportOptions" />
+  <xs:complexType name="ArrayOfUserGroupDerivativeRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroupDerivativeRights" nillable="true" type="tns:UserGroupDerivativeRights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGroupDerivativeRights" nillable="true" type="tns:ArrayOfUserGroupDerivativeRights" />
+  <xs:complexType name="UserGroupDerivativeRights">
+    <xs:sequence>
+      <xs:element xmlns:q46="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DerivativeRights" nillable="true" type="q46:ArrayOfKeyValueOfDerivativeDefinitionArrayOfDerivativeRightU2tm7C3h" />
+      <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" minOccurs="0" name="UserGroup" nillable="true" type="q47:UserGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupDerivativeRights" nillable="true" type="tns:UserGroupDerivativeRights" />
+  <xs:complexType name="AssetUpdateOptions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteImportFilePath" nillable="true" type="xs:anyURI">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The uri of the import file path. Not needed if MTOM is used.&lt;/para&gt;
+            &lt;code&gt;
+            Uri uri = new Uri("http://www.picturepark.com/test/xxx.jpg");
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset id.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreateHistoricVersion" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, the old asset is not overwritten, but kept as a historic version. Default is false.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DeleteDependentAssets" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, dependent assets like versions are deleted. Default is false.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The file name, which must have an extension. Needed only for an upload by MTOM.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HistoricVersionDescription" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Same logic as HistoricVersionName.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HistoricVersionDescription4Master" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. Same logic as HistoricVersionName4Master.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HistoricVersionName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. The name of the newly created historic version (if param CreateHistoricVersion = true).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HistoricVersionName4Master" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. The historic version name of the newly uploaded asset (if param CreateHistoricVersion = true).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImportGuid" nillable="true" type="ser:guid">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The guid, needed for an upload by MTOM (as is recommended).&lt;/para&gt;
+            &lt;para&gt;Please note: the file name, which must have an extension, is also needed for an upload by MTOM.&lt;/para&gt;
+            &lt;code&gt;
+            string fileName = "Kaktus.jpg";  // must have an extension!
+            Guid? guid      = null;
+            . 
+            using (FileStream fileStream = new FileStream(@"E:\Kaktus.jpg", FileMode.Open))
+            .  guid = PictureparkServiceMtom.UploadFile(fileStream);
+            .
+            AssetUpdateOptions assetUpdateOptions = new AssetUpdateOptions()
+            {
+            . ..
+            .  FileName   = fileName,
+            .  ImportGuid = guid,
+            . ..
+            };
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="KeepAssetId4NewFileOnHistorize" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, the new file inherits the asset id of the old.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OnlyCreateOriginalDerivative" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. If true, derivatives are not created (except the original derivative). Default is false.&lt;/para&gt;
+            &lt;para&gt;Needed only in special cases where the user wishes to import his own derivatives.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="TemporaryFileHandling" type="q48:TemporaryFileHandling">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. How to handle the temporary files.&lt;/para&gt;
+            &lt;para&gt;Available options: DeleteTemporaryFile, DeleteTemporaryFileAndContainingFolder and KeepTemporaryFile.&lt;/para&gt;
+            &lt;code&gt;
+            TemporaryFileHandling = TemporaryFileHandling.DeleteTemporaryFile
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetUpdateOptions" nillable="true" type="tns:AssetUpdateOptions" />
+  <xs:complexType name="DerivativeUpdateOptions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsoluteImportFilePath" nillable="true" type="xs:anyURI">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The uri of the import file path. Not needed if MTOM is used.&lt;/para&gt;
+            &lt;code&gt;
+            Uri uri = new Uri("http://www.picturepark.com/test/xxx.jpg");
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset id.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The deriviative definition id.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The file name, which must have an extension. Needed only for an upload by MTOM.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImportGuid" nillable="true" type="ser:guid">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The guid, needed for an upload by MTOM (as is recommended).&lt;/para&gt;
+            &lt;para&gt;Please note: the file name, which must have an extension, is also needed for an upload by MTOM.&lt;/para&gt;
+            &lt;code&gt;
+            string fileName = "Kaktus.jpg";  // must have an extension!
+            Guid? guid      = null;
+            .
+            using (FileStream fileStream = new FileStream(@"E:\Kaktus.jpg", FileMode.Open))
+            .  guid = PictureparkServiceMtom.UploadFile(fileStream);
+            .
+            AssetUpdateOptions assetUpdateOptions = new AssetUpdateOptions()
+            {
+            .  FileName   = fileName,
+            .  ImportGuid = guid,
+            };
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="TemporaryFileHandling" nillable="true" type="q49:TemporaryFileHandling">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Optional. How to handle the temporary files.&lt;/para&gt;
+            &lt;para&gt;Available options: DeleteTemporaryFile, DeleteTemporaryFileAndContainingFolder and KeepTemporaryFile.&lt;/para&gt;
+            &lt;code&gt;
+            TemporaryFileHandling = TemporaryFileHandling.DeleteTemporaryFile
+            &lt;/code&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DerivativeUpdateOptions" nillable="true" type="tns:DerivativeUpdateOptions" />
+</xs:schema>

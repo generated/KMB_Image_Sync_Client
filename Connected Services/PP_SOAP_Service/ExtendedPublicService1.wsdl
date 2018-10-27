@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://www.picturepark.com" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ExtendedPublicService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="Mtom_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://www.picturepark.com" location="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="Default" type="i0:IExtendedPublicService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsByIds">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetsByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/Download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadExtended">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/DownloadExtended" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetsMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacets">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetFacets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets2">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssets2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDerivatives">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetDerivatives" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetContainerService/GetAssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSession">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/CreateSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithSecurityToken">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/LoginWithSecurityToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSecurityToken">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/GetSecurityToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RenewSession">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/RenewSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsValid">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/IsValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationModificationDate">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetConfigurationModificationDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetContentLanguages">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetContentLanguages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetFields">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetAssetFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageConfiguration">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetLanguageConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetConfigurationExtended">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetFacetConfigurationExtended" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionInfo">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicWorkflowService/GetSubscriptionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSubscriptionInfoReceived">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicWorkflowService/ConfirmSubscriptionInfoReceived" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetLinksById">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicCommunicationService/GetAssetLinksById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/AddAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDerivativeRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/GetDerivativeRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/GetAssetRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ImportSingleAsset">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/ImportSingleAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDerivativeRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveDerivativeRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssetsRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveAssetsRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateAssetMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOriginalDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateOriginalDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRenderingJob">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/CreateRenderingJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/DeleteDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddAssets2AssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/AddAssets2AssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetsFromAssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssetsFromAssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetsMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateAssetsMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/CreateAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/UpdateAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssetContainerRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/SaveAssetContainerRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetContainerRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetAssetContainerRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetTotalAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/RemoveAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/MoveAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldSetIdByFieldName">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetFieldSetIdByFieldName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFieldSetDefaultValue">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/UpdateFieldSetDefaultValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUsers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/RemoveUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraceJob">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTracingService/CreateTraceJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFirstChunk">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadFirstChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadChunk">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAssetLink">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/CreateAssetLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetLinks">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/UpdateAssetLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssetLinks">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/DeleteAssetLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Mtom" type="i0:IExtendedPublicService">
+    <wsp:PolicyReference URI="#Mtom_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsByIds">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetsByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/Download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadExtended">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/DownloadExtended" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetsMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetsMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacets">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetFacets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssets2">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssets2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDerivatives">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetService/GetDerivatives" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicAssetContainerService/GetAssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSession">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/CreateSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LoginWithSecurityToken">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/LoginWithSecurityToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSecurityToken">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/GetSecurityToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RenewSession">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/RenewSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsValid">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicSessionService/IsValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationModificationDate">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetConfigurationModificationDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetContentLanguages">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetContentLanguages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetFields">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetAssetFields" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageConfiguration">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetLanguageConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacetConfigurationExtended">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicConfigurationService/GetFacetConfigurationExtended" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptionInfo">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicWorkflowService/GetSubscriptionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSubscriptionInfoReceived">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicWorkflowService/ConfirmSubscriptionInfoReceived" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetLinksById">
+      <soap:operation soapAction="http://www.picturepark.com/IPublicCommunicationService/GetAssetLinksById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/AddAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDerivativeRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/GetDerivativeRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/GetAssetRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ImportSingleAsset">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/ImportSingleAsset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetVersions">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssetVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDerivativeRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveDerivativeRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssetsRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveAssetsRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateAssetMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOriginalDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateOriginalDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRenderingJob">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/CreateRenderingJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/SaveDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDerivative">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/DeleteDerivative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddAssets2AssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/AddAssets2AssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetsFromAssetContainers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/RemoveAssetsFromAssetContainers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetsMetadata">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetService/UpdateAssetsMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/CreateAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/UpdateAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssetContainerRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/SaveAssetContainerRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssetContainerRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetAssetContainerRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalAssets">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetTotalAssets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/RemoveAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveAssetContainer">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/MoveAssetContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldSetIdByFieldName">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/GetFieldSetIdByFieldName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFieldSetDefaultValue">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicAssetContainerService/UpdateFieldSetDefaultValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUsers">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/RemoveUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRights">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicUserService/GetRights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTraceJob">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTracingService/CreateTraceJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFirstChunk">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadFirstChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadChunk">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicTransferService/UploadChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAssetLink">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/CreateAssetLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAssetLinks">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/UpdateAssetLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAssetLinks">
+      <soap:operation soapAction="http://www.picturepark.com/IExtendedPublicCommunicationService/DeleteAssetLinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PictureparkFaultFault">
+        <soap:fault use="literal" name="PictureparkFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExtendedPublicService">
+    <wsdl:port name="Default" binding="tns:Default">
+      <soap:address location="http://facade-ch02.picturepark.com/ExtendedPublicService.svc" />
+    </wsdl:port>
+    <wsdl:port name="Mtom" binding="tns:Mtom">
+      <soap:address location="http://facade-ch02.picturepark.com/ExtendedPublicService.svc/Mtom" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

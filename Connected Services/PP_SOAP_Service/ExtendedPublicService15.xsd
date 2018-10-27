@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfKnownFieldValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KnownFieldValue" nillable="true" type="tns:KnownFieldValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKnownFieldValue" nillable="true" type="tns:ArrayOfKnownFieldValue" />
+  <xs:complexType name="KnownFieldValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldOptionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KnownFieldValue" nillable="true" type="tns:KnownFieldValue" />
+  <xs:complexType name="KnownFieldValueDateTime">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Value" nillable="true" type="q1:DateTimeOffset" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueDateTime" nillable="true" type="tns:KnownFieldValueDateTime" />
+  <xs:complexType name="KnownFieldValueString">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LanguageId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueString" nillable="true" type="tns:KnownFieldValueString" />
+  <xs:complexType name="KnownFieldValueBoolean">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueBoolean" nillable="true" type="tns:KnownFieldValueBoolean" />
+  <xs:complexType name="KnownFieldValueInteger32">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueInteger32" nillable="true" type="tns:KnownFieldValueInteger32" />
+  <xs:complexType name="KnownFieldValueInteger64">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueInteger64" nillable="true" type="tns:KnownFieldValueInteger64" />
+  <xs:complexType name="KnownFieldValueDouble">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueDouble" nillable="true" type="tns:KnownFieldValueDouble" />
+  <xs:complexType name="KnownFieldValueUserShort">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" minOccurs="0" name="Value" nillable="true" type="q2:UserShort" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueUserShort" nillable="true" type="tns:KnownFieldValueUserShort" />
+  <xs:complexType name="KnownFieldValueAssetContainerAssignment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:KnownFieldValue">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" minOccurs="0" name="Value" nillable="true" type="q3:AssetContainerAssignmentExtended" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnownFieldValueAssetContainerAssignment" nillable="true" type="tns:KnownFieldValueAssetContainerAssignment" />
+  <xs:complexType name="ArrayOfFieldValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FieldValue" nillable="true" type="tns:FieldValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFieldValue" nillable="true" type="tns:ArrayOfFieldValue" />
+  <xs:complexType name="FieldValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldOptionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldValueId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Source" nillable="true" type="q4:FieldValueSource" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" minOccurs="0" name="ValueAssetContainerAssignment" nillable="true" type="q5:AssetContainerAssignmentExtended" />
+      <xs:element minOccurs="0" name="ValueAssetContainerId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueBoolean" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ValueDate" nillable="true" type="q6:DateTimeOffset" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ValueDateTime" nillable="true" type="q7:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ValueDouble" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueInteger32" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueInteger64" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ValueString" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" minOccurs="0" name="ValueUserShort" nillable="true" type="q8:UserShort" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldValue" nillable="true" type="tns:FieldValue" />
+  <xs:complexType name="PublicConfiguration">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Countries" nillable="true" type="q9:ArrayOfCountry" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" minOccurs="0" name="DerivativeDefinitions" nillable="true" type="q10:ArrayOfDerivativeDefinition" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="PictureparkVersion" nillable="true" type="q11:Version" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PublicConfiguration" nillable="true" type="tns:PublicConfiguration" />
+  <xs:complexType name="ArrayOfLanguage4Content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4Content" nillable="true" type="tns:Language4Content" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4Content" nillable="true" type="tns:ArrayOfLanguage4Content" />
+  <xs:complexType name="Language4Content">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentLanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="DefaultLanguage4AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="DefaultLanguage4MetadataId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDefaultLanguage4Content" type="xs:boolean" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q12:Language" />
+      <xs:element minOccurs="0" name="Language4ContentId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4Content" nillable="true" type="tns:Language4Content" />
+  <xs:complexType name="ArrayOfField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" nillable="true" type="tns:Field" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfField" nillable="true" type="tns:ArrayOfField" />
+  <xs:complexType name="Field">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Defines the attributes of a Field (Asset-, User- or AssetContainerField)&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Analyzed" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Defines if the field gets analyzed by RavenDB&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetContainerType" nillable="true" type="q13:AssetContainerType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset container type, either Category or AssetClass.&lt;/para&gt;
+            &lt;para&gt;This property is needed for asset classes.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssetTypeIds" nillable="true" type="q14:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with the ids of asset types assigned to this field. Currently not used.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="BaseAssetContainerId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Needed for control type TagBox and defines root of the tagbox.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Boost" type="xs:float">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Defines the boost factor for Fulltext search&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="ControlType" type="q15:ControlType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;ComboBox, DateField, Checkbox ..&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="DataType" type="q16:DataType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Integer32, String, Date, Boolean ..&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DefaultGridColumnWidth" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The default field column width for the asset browser grid view.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FieldControlInfos" nillable="true" type="tns:FieldControlInfos">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Control Infos.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the field.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="FieldLookupEntity" type="q17:FieldLookupEntity">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The name of the table to which the field belongs: FieldValues, Assets, Derivatives ..&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FieldLookupEntityId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the FieldLookupEntity (see there).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="FieldOptionsLookupEntity" nillable="true" type="q18:FieldOptionsLookupEntity">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The name of the table to which the field option belongs: Countries, Users ..&lt;/para&gt;
+            &lt;para&gt;Is null, if the options are not stored in one of these tables.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FieldOptionsLookupEntityId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the FieldOptionsLookupEntityId (see there).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="FieldType" type="q19:FieldType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;AssetField, UserField or AssetContainerField.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IncludeInAssetIndexFullTexts" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, this field is searched in case of a full text search.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IncludeInCustomDBIndex" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, this field is searched in case of a full text index.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsLanguageSpecific" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Language specific fields like AssetName and AssetDescription may have different values depending on the language.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsReadOnly" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A read only field can be updated only by the system, not by a user.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsRequired" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, this field cannot be empty or null.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsSystemField" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A system field like Sha1Hash or Fulltext is needed for programming purposes and not visible for a user.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MetadataMapping" nillable="true" type="tns:ArrayOfMetadataProperty">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;List of xmp mappings, shows which Picturepark fields are mapped to which metadata fields in the image file.&lt;/para&gt;
+            &lt;para&gt;This allows for the mappings to be displayed in the UI, e.g. in the upload mask.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The field name, e.g. AssetName, AssetDescription, FileSizeInBytes, CDF8 ..&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Options" nillable="true" type="tns:ArrayOfFieldOption">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with all available options for this field.&lt;/para&gt;
+            &lt;para&gt;Needed for ComboBox- and MultiCheckbox fields).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReplaceDelimiters" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, field value will be splitted and formated by its special characters. The results will be added to the full text search index.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Translation" nillable="true" type="tns:FieldTranslation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The field data in the language of the current user.&lt;/para&gt;
+            &lt;para&gt;&lt;c&gt;Translation.Caption&lt;/c&gt; contains the field name in this language.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfFieldTranslation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Currently not used.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ValidationRegEx" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A regular expression used to check the input data, e.g. to enforce the input of an email address in a correct format.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Time stamp.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Field" nillable="true" type="tns:Field" />
+  <xs:complexType name="FieldControlInfos">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Defines the attributes of a Field (Asset-, User- or AssetContainerField)&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldControlInfoId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the field control info.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the field.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MaxTextLength" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Max count of chars.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TagBoxShowFullPath" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Should the TagBox show the full path or only the Tag (AssetContainerName).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TotalTextAreaRows" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The numbers of rows of a textarea.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Time stamp.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldControlInfos" nillable="true" type="tns:FieldControlInfos" />
+  <xs:complexType name="ArrayOfMetadataProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MetadataProperty" nillable="true" type="tns:MetadataProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMetadataProperty" nillable="true" type="tns:ArrayOfMetadataProperty" />
+  <xs:complexType name="MetadataProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="DataType" type="q20:DataType" />
+      <xs:element minOccurs="0" name="DataTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsArray" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMappable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MetadataParentPropertyId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MetadataPropertyId" type="xs:int" />
+      <xs:element minOccurs="0" name="MetadataSchema" nillable="true" type="tns:MetadataSchema" />
+      <xs:element minOccurs="0" name="MetadataSchemaId" type="xs:int" />
+      <xs:element minOccurs="0" name="PropertyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetadataProperty" nillable="true" type="tns:MetadataProperty" />
+  <xs:complexType name="MetadataSchema">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MetadataSchemaId" type="xs:int" />
+      <xs:element minOccurs="0" name="Schema" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetadataSchema" nillable="true" type="tns:MetadataSchema" />
+  <xs:complexType name="ArrayOfFieldOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FieldOption" nillable="true" type="tns:FieldOption" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFieldOption" nillable="true" type="tns:ArrayOfFieldOption" />
+  <xs:complexType name="FieldOption">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldOptionId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfFieldOptionTranslation" />
+      <xs:element minOccurs="0" name="ValueString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldOption" nillable="true" type="tns:FieldOption" />
+  <xs:complexType name="ArrayOfFieldOptionTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FieldOptionTranslation" nillable="true" type="tns:FieldOptionTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFieldOptionTranslation" nillable="true" type="tns:ArrayOfFieldOptionTranslation" />
+  <xs:complexType name="FieldOptionTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldOptionId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldOptionTranslationId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ValueString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldOptionTranslation" nillable="true" type="tns:FieldOptionTranslation" />
+  <xs:complexType name="FieldTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldTranslationId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ToolTip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldTranslation" nillable="true" type="tns:FieldTranslation" />
+  <xs:complexType name="ArrayOfFieldTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FieldTranslation" nillable="true" type="tns:FieldTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFieldTranslation" nillable="true" type="tns:ArrayOfFieldTranslation" />
+  <xs:complexType name="LanguageConfiguration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Languages4AssetContainers" nillable="true" type="tns:ArrayOfLanguage4AssetContainer" />
+      <xs:element minOccurs="0" name="Languages4Contents" nillable="true" type="tns:ArrayOfLanguage4Content" />
+      <xs:element minOccurs="0" name="Languages4FullTextIndexes" nillable="true" type="tns:ArrayOfLanguage4FullTextIndex" />
+      <xs:element minOccurs="0" name="Languages4Metadata" nillable="true" type="tns:ArrayOfLanguage4Metadata" />
+      <xs:element minOccurs="0" name="Languages4UserInterfaces" nillable="true" type="tns:ArrayOfLanguage4UserInterface" />
+      <xs:element minOccurs="0" name="Languages4Version" nillable="true" type="tns:ArrayOfLanguage4Version" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LanguageConfiguration" nillable="true" type="tns:LanguageConfiguration" />
+  <xs:complexType name="ArrayOfLanguage4AssetContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4AssetContainer" nillable="true" type="tns:Language4AssetContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4AssetContainer" nillable="true" type="tns:ArrayOfLanguage4AssetContainer" />
+  <xs:complexType name="Language4AssetContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CopyLanguageId" type="xs:int" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q21:Language" />
+      <xs:element minOccurs="0" name="Language4AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4AssetContainer" nillable="true" type="tns:Language4AssetContainer" />
+  <xs:complexType name="ArrayOfLanguage4FullTextIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4FullTextIndex" nillable="true" type="tns:Language4FullTextIndex" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4FullTextIndex" nillable="true" type="tns:ArrayOfLanguage4FullTextIndex" />
+  <xs:complexType name="Language4FullTextIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CatalogLanguageId" type="xs:int" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q22:Language" />
+      <xs:element minOccurs="0" name="Language4FullTextIndexId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4FullTextIndex" nillable="true" type="tns:Language4FullTextIndex" />
+  <xs:complexType name="ArrayOfLanguage4Metadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4Metadata" nillable="true" type="tns:Language4Metadata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4Metadata" nillable="true" type="tns:ArrayOfLanguage4Metadata" />
+  <xs:complexType name="Language4Metadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsRequired" type="xs:boolean" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q23:Language" />
+      <xs:element minOccurs="0" name="Language4MetadataId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageFallbacks" nillable="true" type="tns:ArrayOfLanguageFallback" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4Metadata" nillable="true" type="tns:Language4Metadata" />
+  <xs:complexType name="ArrayOfLanguageFallback">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LanguageFallback" nillable="true" type="tns:LanguageFallback" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguageFallback" nillable="true" type="tns:ArrayOfLanguageFallback" />
+  <xs:complexType name="LanguageFallback">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FallbackLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FallbackLanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="Language4MetadataId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageFallbackId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LanguageFallback" nillable="true" type="tns:LanguageFallback" />
+  <xs:complexType name="ArrayOfLanguage4UserInterface">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4UserInterface" nillable="true" type="tns:Language4UserInterface" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4UserInterface" nillable="true" type="tns:ArrayOfLanguage4UserInterface" />
+  <xs:complexType name="Language4UserInterface">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DefaultLanguage4ContentId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q24:Language" />
+      <xs:element minOccurs="0" name="Language4UserInterfaceId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4UserInterface" nillable="true" type="tns:Language4UserInterface" />
+  <xs:complexType name="ArrayOfLanguage4Version">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language4Version" nillable="true" type="tns:Language4Version" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage4Version" nillable="true" type="tns:ArrayOfLanguage4Version" />
+  <xs:complexType name="Language4Version">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsFavorite" type="xs:boolean" />
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Language" nillable="true" type="q25:Language" />
+      <xs:element minOccurs="0" name="Language4VersionId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language4Version" nillable="true" type="tns:Language4Version" />
+</xs:schema>

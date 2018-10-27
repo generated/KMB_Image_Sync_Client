@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfAssetContainerComparisonOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerComparisonOperation" nillable="true" type="tns:AssetContainerComparisonOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerComparisonOperation" nillable="true" type="tns:ArrayOfAssetContainerComparisonOperation" />
+  <xs:complexType name="AssetContainerComparisonOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="IncludeSubAssetContainers" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerComparisonOperation" nillable="true" type="tns:AssetContainerComparisonOperation" />
+  <xs:complexType name="AssetContainerIncludeOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetContainerComparisonOperation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerIncludeOperation" nillable="true" type="tns:AssetContainerIncludeOperation" />
+  <xs:complexType name="AssetContainerExcludeOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetContainerComparisonOperation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerExcludeOperation" nillable="true" type="tns:AssetContainerExcludeOperation" />
+  <xs:complexType name="ArrayOfComparisonOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComparisonOperation" nillable="true" type="tns:ComparisonOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComparisonOperation" nillable="true" type="tns:ArrayOfComparisonOperation" />
+  <xs:complexType name="ComparisonOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComparisonOperation" nillable="true" type="tns:ComparisonOperation" />
+  <xs:complexType name="DateTimeAfterOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="AfterDateTime" type="q1:DateTimeOffset" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeAfterOperation" nillable="true" type="tns:DateTimeAfterOperation" />
+  <xs:complexType name="DateTimeBeforeOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="BeforeDateTime" type="q2:DateTimeOffset" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeBeforeOperation" nillable="true" type="tns:DateTimeBeforeOperation" />
+  <xs:complexType name="DateTimeBetweenOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="AfterDateTime" type="q3:DateTimeOffset" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="BeforeDateTime" type="q4:DateTimeOffset" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeBetweenOperation" nillable="true" type="tns:DateTimeBetweenOperation" />
+  <xs:complexType name="DateTimeEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="EqualDateTime" type="q5:DateTimeOffset" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeEqualOperation" nillable="true" type="tns:DateTimeEqualOperation" />
+  <xs:complexType name="StringEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EqualString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringEqualOperation" nillable="true" type="tns:StringEqualOperation" />
+  <xs:complexType name="StringNotEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NotEqualString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringNotEqualOperation" nillable="true" type="tns:StringNotEqualOperation" />
+  <xs:complexType name="StringContainsOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContainsString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringContainsOperation" nillable="true" type="tns:StringContainsOperation" />
+  <xs:complexType name="StringNotContainsOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NotContainsString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringNotContainsOperation" nillable="true" type="tns:StringNotContainsOperation" />
+  <xs:complexType name="StringEmptyOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringEmptyOperation" nillable="true" type="tns:StringEmptyOperation" />
+  <xs:complexType name="StringNotEmptyOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringNotEmptyOperation" nillable="true" type="tns:StringNotEmptyOperation" />
+  <xs:complexType name="StringStartsWithOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StartsWithString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringStartsWithOperation" nillable="true" type="tns:StringStartsWithOperation" />
+  <xs:complexType name="StringListEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EqualStringList" nillable="true" type="q6:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringListEqualOperation" nillable="true" type="tns:StringListEqualOperation" />
+  <xs:complexType name="StringListContainsOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ContainsStringList" nillable="true" type="q7:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringListContainsOperation" nillable="true" type="tns:StringListContainsOperation" />
+  <xs:complexType name="NumericEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EqualNumeric" type="xs:float" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericEqualOperation" nillable="true" type="tns:NumericEqualOperation" />
+  <xs:complexType name="NumericNotEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NotEqualNumeric" type="xs:float" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericNotEqualOperation" nillable="true" type="tns:NumericNotEqualOperation" />
+  <xs:complexType name="NumericLargerThanOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeMin" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Include lower boundarie's value in result. Lucene syntax only!
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="LargerThanNumeric" type="xs:float" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericLargerThanOperation" nillable="true" type="tns:NumericLargerThanOperation" />
+  <xs:complexType name="NumericSmallerThanOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeMax" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Include upper boundarie's value in result. Lucene syntax only!
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SmallerThanNumeric" type="xs:float" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericSmallerThanOperation" nillable="true" type="tns:NumericSmallerThanOperation" />
+  <xs:complexType name="NumericBetweenOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeMax" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Include upper boundarie's value in result. Lucene syntax only!
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="IncludeMin" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Include lower boundarie's value in result. Lucene syntax only!
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="LargerThanNumeric" type="xs:float" />
+          <xs:element minOccurs="0" name="SmallerThanNumeric" type="xs:float" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericBetweenOperation" nillable="true" type="tns:NumericBetweenOperation" />
+  <xs:complexType name="NumericListEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="EqualNumericList" nillable="true" type="q8:ArrayOffloat" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NumericListEqualOperation" nillable="true" type="tns:NumericListEqualOperation" />
+  <xs:complexType name="DateTimeNowAfterOrEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowAfterOrEqualOperation" nillable="true" type="tns:DateTimeNowAfterOrEqualOperation" />
+  <xs:complexType name="DateTimeNowBeforeOrEqualOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowBeforeOrEqualOperation" nillable="true" type="tns:DateTimeNowBeforeOrEqualOperation" />
+  <xs:complexType name="DateTimeNowOlderOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowOlderOperation" nillable="true" type="tns:DateTimeNowOlderOperation" />
+  <xs:complexType name="DateTimeNowLastOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowLastOperation" nillable="true" type="tns:DateTimeNowLastOperation" />
+  <xs:complexType name="DateTimeNowNextOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowNextOperation" nillable="true" type="tns:DateTimeNowNextOperation" />
+  <xs:complexType name="DateTimeNowAfterOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Minutes" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DateTimeNowAfterOperation" nillable="true" type="tns:DateTimeNowAfterOperation" />
+  <xs:complexType name="AssetContainerIncludeFieldOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+          <xs:element minOccurs="0" name="IncludeSubAssetContainers" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerIncludeFieldOperation" nillable="true" type="tns:AssetContainerIncludeFieldOperation" />
+  <xs:complexType name="AssetContainerExcludeFieldOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+          <xs:element minOccurs="0" name="IncludeSubAssetContainers" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerExcludeFieldOperation" nillable="true" type="tns:AssetContainerExcludeFieldOperation" />
+  <xs:complexType name="StringListContainsExactOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ComparisonOperation">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ContainsExactStringList" nillable="true" type="q9:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringListContainsExactOperation" nillable="true" type="tns:StringListContainsExactOperation" />
+</xs:schema>

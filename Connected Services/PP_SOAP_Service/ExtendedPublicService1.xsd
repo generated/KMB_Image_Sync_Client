@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.LogicalOperation" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.LogicalOperation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" />
+  <xs:complexType name="AssetContainerLogicalOperation">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="AssetContainerLogicalOperation" nillable="true" type="tns:AssetContainerLogicalOperation" />
+  <xs:complexType name="AssetContainerAndOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetContainerLogicalOperation">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" minOccurs="0" name="ComparisonOperations" nillable="true" type="q1:ArrayOfAssetContainerComparisonOperation" />
+          <xs:element minOccurs="0" name="LogicalOperations" nillable="true" type="tns:ArrayOfAssetContainerLogicalOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerAndOperation" nillable="true" type="tns:AssetContainerAndOperation" />
+  <xs:complexType name="ArrayOfAssetContainerLogicalOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerLogicalOperation" nillable="true" type="tns:AssetContainerLogicalOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerLogicalOperation" nillable="true" type="tns:ArrayOfAssetContainerLogicalOperation" />
+  <xs:complexType name="AssetContainerOrOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetContainerLogicalOperation">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" minOccurs="0" name="ComparisonOperations" nillable="true" type="q2:ArrayOfAssetContainerComparisonOperation" />
+          <xs:element minOccurs="0" name="LogicalOperations" nillable="true" type="tns:ArrayOfAssetContainerLogicalOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerOrOperation" nillable="true" type="tns:AssetContainerOrOperation" />
+  <xs:complexType name="LogicalOperation">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="LogicalOperation" nillable="true" type="tns:LogicalOperation" />
+  <xs:complexType name="AndOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LogicalOperation">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" minOccurs="0" name="ComparisonOperations" nillable="true" type="q3:ArrayOfComparisonOperation" />
+          <xs:element minOccurs="0" name="LogicalOperations" nillable="true" type="tns:ArrayOfLogicalOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AndOperation" nillable="true" type="tns:AndOperation" />
+  <xs:complexType name="ArrayOfLogicalOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogicalOperation" nillable="true" type="tns:LogicalOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogicalOperation" nillable="true" type="tns:ArrayOfLogicalOperation" />
+  <xs:complexType name="OrOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LogicalOperation">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" minOccurs="0" name="ComparisonOperations" nillable="true" type="q4:ArrayOfComparisonOperation" />
+          <xs:element minOccurs="0" name="LogicalOperations" nillable="true" type="tns:ArrayOfLogicalOperation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrOperation" nillable="true" type="tns:OrOperation" />
+</xs:schema>

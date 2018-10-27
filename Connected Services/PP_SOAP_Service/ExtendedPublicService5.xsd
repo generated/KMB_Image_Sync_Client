@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Facet" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Facet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Publisher" />
+  <xs:complexType name="ArrayOfFacetSearchParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetSearchParameter" nillable="true" type="tns:FacetSearchParameter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetSearchParameter" nillable="true" type="tns:ArrayOfFacetSearchParameter" />
+  <xs:complexType name="FacetSearchParameter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FacetConfigurationId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldIdsOfFacets" nillable="true" type="q1:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            This is used when facets have already (a) filter(s) applied and therefore it's not possible to use the FieldIds from the facet configuration
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" minOccurs="0" name="SearchFilter" nillable="true" type="q2:ExtendedAssetFilter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetSearchParameter" nillable="true" type="tns:FacetSearchParameter" />
+  <xs:complexType name="ArrayOfFacetValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetValue" nillable="true" type="tns:FacetValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetValue" nillable="true" type="tns:ArrayOfFacetValue" />
+  <xs:complexType name="FacetValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetContainerId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Average" nillable="true" type="xs:double" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.ComparisonOperation" minOccurs="0" name="ComparisonOperation" nillable="true" type="q3:ComparisonOperation" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="ComparisonOperationType" type="q4:ComparisonOperationType" />
+      <xs:element minOccurs="0" name="Count" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hits" type="xs:int" />
+      <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Max" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Min" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Range" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RangeConfiguration" nillable="true" type="tns:FacetConfigurationRange" />
+      <xs:element minOccurs="0" name="SortOrder" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Sum" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetValue" nillable="true" type="tns:FacetValue" />
+  <xs:complexType name="FacetConfigurationRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Used in UI set to user language4content's caption
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateRange" nillable="true" type="tns:FacetDateRange" />
+      <xs:element minOccurs="0" name="FromNumeric" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="ToNumeric" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfFacetConfigurationTranslation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Used for configuration (read / save)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationRange" nillable="true" type="tns:FacetConfigurationRange" />
+  <xs:complexType name="FacetDateRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetDateRange" nillable="true" type="tns:FacetDateRange" />
+  <xs:complexType name="ArrayOfFacetConfigurationTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetConfigurationTranslation" nillable="true" type="tns:FacetConfigurationTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetConfigurationTranslation" nillable="true" type="tns:ArrayOfFacetConfigurationTranslation" />
+  <xs:complexType name="FacetConfigurationTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationTranslation" nillable="true" type="tns:FacetConfigurationTranslation" />
+  <xs:complexType name="FacetResults">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" minOccurs="0" name="ProvidedSearchFilter" nillable="true" type="q5:ExtendedAssetFilter">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Holds the asset filter that has been provided for searching
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfFacetResult">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A result per field (facet)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetResults" nillable="true" type="tns:FacetResults" />
+  <xs:complexType name="ArrayOfFacetResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetResult" nillable="true" type="tns:FacetResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetResult" nillable="true" type="tns:ArrayOfFacetResult" />
+  <xs:complexType name="FacetResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Serves as identifier for the UI
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Group" nillable="true" type="tns:ArrayOfFacetResult" />
+      <xs:element minOccurs="0" name="IsInitiallyOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RemainingHits" type="xs:int" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RemainingTerms" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element minOccurs="0" name="RemainingTermsCount" type="xs:int" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="SelectionBehavior" type="q7:FacetInnerSelectionBehavior" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ArrayOfFacetValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetResult" nillable="true" type="tns:FacetResult" />
+  <xs:complexType name="FacetConfigurationExtended">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FacetConfigurationViewItem">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldIds" nillable="true" type="q8:ArrayOfint" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Asset" minOccurs="0" name="InitialAssetFilter" nillable="true" type="q9:ExtendedAssetFilter" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationExtended" nillable="true" type="tns:FacetConfigurationExtended" />
+  <xs:complexType name="FacetConfigurationViewItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseAssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="FacetConfigurationId" type="xs:int" />
+      <xs:element minOccurs="0" name="FacetConfigurationJson" nillable="true" type="tns:FacetConfigurationJson" />
+      <xs:element minOccurs="0" name="HideBackendLink" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ListViewFieldGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="LogoutUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewFlagDays" type="xs:int" />
+      <xs:element minOccurs="0" name="OverlayFieldId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OverviewFieldGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="OverviewUiElementId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OverviewUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShareListViewFieldGroupId" type="xs:int" />
+      <xs:element minOccurs="0" name="ShareOverviewFieldGroupId" type="xs:int" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Publisher" minOccurs="0" name="Skin" nillable="true" type="q10:Skin" />
+      <xs:element minOccurs="0" name="SkinId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="SuggestionSourceId" type="q11:SuggestionSource" />
+      <xs:element minOccurs="0" name="TermsAndConditions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationViewItem" nillable="true" type="tns:FacetConfigurationViewItem" />
+  <xs:complexType name="FacetConfigurationJson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Elements" nillable="true" type="tns:ArrayOfFacetConfigurationElement" />
+      <xs:element minOccurs="0" name="Groups" nillable="true" type="tns:ArrayOfFacetConfigurationGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationJson" nillable="true" type="tns:FacetConfigurationJson" />
+  <xs:complexType name="ArrayOfFacetConfigurationElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetConfigurationElement" nillable="true" type="tns:FacetConfigurationElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetConfigurationElement" nillable="true" type="tns:ArrayOfFacetConfigurationElement" />
+  <xs:complexType name="FacetConfigurationElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FieldId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsInitiallyOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Ranges" nillable="true" type="tns:ArrayOfFacetConfigurationRange" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="SelectionBehavior" type="q12:FacetInnerSelectionBehavior" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationElement" nillable="true" type="tns:FacetConfigurationElement" />
+  <xs:complexType name="ArrayOfFacetConfigurationRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetConfigurationRange" nillable="true" type="tns:FacetConfigurationRange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetConfigurationRange" nillable="true" type="tns:ArrayOfFacetConfigurationRange" />
+  <xs:complexType name="ArrayOfFacetConfigurationGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacetConfigurationGroup" nillable="true" type="tns:FacetConfigurationGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFacetConfigurationGroup" nillable="true" type="tns:ArrayOfFacetConfigurationGroup" />
+  <xs:complexType name="FacetConfigurationGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Used in UI set to user language4content's caption
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldIds" nillable="true" type="q13:ArrayOfint" />
+      <xs:element minOccurs="0" name="IsInitiallyOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfFacetConfigurationTranslation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Used for configuration (read / save)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacetConfigurationGroup" nillable="true" type="tns:FacetConfigurationGroup" />
+</xs:schema>

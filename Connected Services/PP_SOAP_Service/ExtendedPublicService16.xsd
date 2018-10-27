@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.User" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/VIT.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" />
+  <xs:complexType name="User">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Session specific user data.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;First name plus last name&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/VIT.Common.DataContract" minOccurs="0" name="Language" type="q1:ApplicationLanguage">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The gui language for this user, which is stored in the user profile, e.g. "English".&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Language4ContentId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of a content language.&lt;/para&gt;
+            &lt;para&gt;Language4Content is &lt;c&gt;not a language&lt;/c&gt;, but a &lt;c&gt;set of languages&lt;/c&gt; for specific purposes.&lt;/para&gt;
+            &lt;para&gt;Different languages can be assigned for &lt;c&gt;content&lt;/c&gt;, &lt;c&gt;metadata&lt;/c&gt;, &lt;c&gt;asset containers&lt;/c&gt; and &lt;c&gt;fulltext indexing&lt;/c&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="LoginStatus" type="q2:LoginStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;LoggedIn, NotLoggedIn or LoggedInAsGuest.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The password must be submitted for &lt;see cref="M:FacadeServiceContract.ISessionService.Login()" /&gt;, but is never returned.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Skin" nillable="true" type="q3:SkinColor">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Available options:Gray=0, Blue=1, White=2.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserGroups" nillable="true" type="q4:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Array of the ids of the assigned user groups.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="UserShort">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AlternativeAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CanBeInternalContact" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanChangeOwnProfile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="CountryTranslations" nillable="true" type="q5:ArrayOfCountryTranslation" />
+      <xs:element minOccurs="0" name="CreatedByUserId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" nillable="true" type="q6:DateTimeOffset" />
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ExpirationDate" nillable="true" type="q7:DateTimeOffset" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q8:ArrayOfKnownFieldValue" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid4PasswordReset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalContactUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsGuest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSupportContact" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUpdaterServiceUser" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="LastActiveFacetConfigurationId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LastLoginDate" nillable="true" type="q9:DateTimeOffset" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LinkedGlobalUserId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LockDate" nillable="true" type="q10:DateTimeOffset" />
+      <xs:element minOccurs="0" name="LoginOnlyWithClaimsIdentity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoginOnlyWithSecurityToken" type="xs:boolean" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q11:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RegistrationStateId" nillable="true" type="q12:RegistrationState" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RenewalStateId" nillable="true" type="q13:RenewalState" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RenewalUntilDate" nillable="true" type="q14:DateTimeOffset" />
+      <xs:element minOccurs="0" name="RootSiteUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseLdapAuthentication" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserShort" nillable="true" type="tns:UserShort" />
+  <xs:complexType name="UserCompact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCompact" nillable="true" type="tns:UserCompact" />
+  <xs:complexType name="UserData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AlternativeAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CanBeInternalContact" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanChangeOwnProfile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Country" nillable="true" type="q15:Country" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedByUserId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" nillable="true" type="q16:DateTimeOffset" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ExpirationDate" nillable="true" type="q17:DateTimeOffset" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Configuration" minOccurs="0" name="FieldValues" nillable="true" type="q18:ArrayOfFieldValue" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid4PasswordReset" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasTermsAccepted" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Impersonation" nillable="true" type="tns:Impersonation" />
+      <xs:element minOccurs="0" name="InternalContactUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsGuest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSupport" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSupportContact" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsUpdaterServiceUser" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="LastActiveFacetConfigurationId" nillable="true" type="xs:int" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LastLoginDate" nillable="true" type="q19:DateTimeOffset" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LockDate" nillable="true" type="q20:DateTimeOffset" />
+      <xs:element minOccurs="0" name="LoginOnlyWithClaimsIdentity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LoginOnlyWithSecurityToken" type="xs:boolean" />
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q21:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RegistrationState" nillable="true" type="q22:RegistrationState" />
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RenewalState" nillable="true" type="q23:RenewalState" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RenewalUntilDate" nillable="true" type="q24:DateTimeOffset" />
+      <xs:element minOccurs="0" name="SiteId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UseLdapAuthentication" type="xs:boolean" />
+      <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserGroupIds" nillable="true" type="q25:ArrayOfint" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserData" nillable="true" type="tns:UserData" />
+  <xs:complexType name="Impersonation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImpersonatedEmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImpersonationId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Impersonation" nillable="true" type="tns:Impersonation" />
+  <xs:complexType name="UserCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TotalUsers" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;TotalUsers is the number of rows in the query. If a limit is defined this figure may be higher than the number of records returned by the query.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUserShort">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:UserShort" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCollection" nillable="true" type="tns:UserCollection" />
+  <xs:complexType name="ArrayOfUserShort">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserShort" nillable="true" type="tns:UserShort" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserShort" nillable="true" type="tns:ArrayOfUserShort" />
+  <xs:complexType name="Rights">
+    <xs:sequence>
+      <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DerivativeDefinitionRights" nillable="true" type="q26:ArrayOfKeyValueOfintArrayOfDerivativeDefinitionRightuUS27HWe" />
+      <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldRights" nillable="true" type="q27:ArrayOfKeyValueOfintArrayOfFieldRightuUS27HWe" />
+      <xs:element minOccurs="0" name="HasPPMCRights" type="xs:boolean" />
+      <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PersonalItemRights" nillable="true" type="q28:ArrayOfKeyValueOfintArrayOfPersonalItemRightuUS27HWe" />
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="RightTemplates" nillable="true" type="q29:ArrayOfRightTemplate" />
+      <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SiteRights" nillable="true" type="q30:ArrayOfKeyValueOfintArrayOfSiteRightuUS27HWe" />
+      <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserGroupRights" nillable="true" type="q31:ArrayOfKeyValueOfintArrayOfUserGroupRightuUS27HWe" />
+      <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="UserRights" nillable="true" type="q32:ArrayOfUserRight" />
+      <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WidgetRights" nillable="true" type="q33:ArrayOfKeyValueOfintArrayOfWidgetRightuUS27HWe" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rights" nillable="true" type="tns:Rights" />
+</xs:schema>

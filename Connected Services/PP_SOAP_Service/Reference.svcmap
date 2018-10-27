@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8349069e-663f-4e4e-b5a5-970649586ebf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExtendedPublicService.xsd" MetadataType="Schema" ID="8b798568-b9b5-4f22-bd5d-530269a5e0b2" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ExtendedPublicService1.xsd" MetadataType="Schema" ID="6ee48ba0-55d6-4cdc-9ead-5988596c6fca" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd7" />
+    <MetadataFile FileName="ExtendedPublicService2.xsd" MetadataType="Schema" ID="e920d56c-bf4c-4088-9d17-0fc5f1ce2458" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd6" />
+    <MetadataFile FileName="ExtendedPublicService3.xsd" MetadataType="Schema" ID="c0927dc2-4989-4419-8287-6bd4850b6714" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" />
+    <MetadataFile FileName="ExtendedPublicService4.xsd" MetadataType="Schema" ID="e5cabbe9-64fe-40a4-9ab3-993642473613" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ExtendedPublicService5.xsd" MetadataType="Schema" ID="b7074686-cd33-40ca-b028-dd3ee2936984" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd13" />
+    <MetadataFile FileName="ExtendedPublicService6.xsd" MetadataType="Schema" ID="84bc5705-05cc-4661-b308-916810c083d3" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" />
+    <MetadataFile FileName="ExtendedPublicService7.xsd" MetadataType="Schema" ID="62ab9088-816d-4e89-bf43-e4089db754d3" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd8" />
+    <MetadataFile FileName="ExtendedPublicService8.xsd" MetadataType="Schema" ID="f1fd0033-c229-409b-81af-dd846e11e8db" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd18" />
+    <MetadataFile FileName="ExtendedPublicService9.xsd" MetadataType="Schema" ID="ead9734f-78b9-449d-b743-472f9fb5206b" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd16" />
+    <MetadataFile FileName="ExtendedPublicService10.xsd" MetadataType="Schema" ID="b5a4c549-684e-4289-ae44-6376f558f1d9" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd12" />
+    <MetadataFile FileName="ExtendedPublicService11.xsd" MetadataType="Schema" ID="7d2eb6fa-993b-426c-896f-c5152c3248c7" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd17" />
+    <MetadataFile FileName="ExtendedPublicService.wsdl" MetadataType="Wsdl" ID="ca878c31-7cf4-4929-a7c8-5370615cc12b" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ExtendedPublicService12.xsd" MetadataType="Schema" ID="c4d495c0-5e02-4056-9d71-7c4960eb39d8" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd15" />
+    <MetadataFile FileName="ExtendedPublicService13.xsd" MetadataType="Schema" ID="0b3954f6-c505-456d-bf95-6d8ea56a5dd6" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd11" />
+    <MetadataFile FileName="ExtendedPublicService1.wsdl" MetadataType="Wsdl" ID="b9fdf616-9fd7-4080-b04c-183558cf98d2" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?wsdl" />
+    <MetadataFile FileName="ExtendedPublicService14.xsd" MetadataType="Schema" ID="b67e73fe-0e3f-4b0f-9270-697191b611e0" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd14" />
+    <MetadataFile FileName="ExtendedPublicService15.xsd" MetadataType="Schema" ID="5dbe4101-e6df-48d1-abf2-7ecc2e4acf78" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd10" />
+    <MetadataFile FileName="ExtendedPublicService16.xsd" MetadataType="Schema" ID="1d6ff506-084e-4bd7-8a74-2d7d2fc38a19" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ExtendedPublicService17.xsd" MetadataType="Schema" ID="29081a71-2e0e-4700-9c21-123d57fc02a7" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ExtendedPublicService18.xsd" MetadataType="Schema" ID="7506c2c6-5e44-4e9d-94bc-d1987c532acc" SourceId="1" SourceUrl="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.WorldPort" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.WorldPort" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="PortAssetItemCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Assets" nillable="true" type="tns:ArrayOfPortAssetItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:Asset.AssetItem" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TotalAssets" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The number of assets in the query.&lt;/para&gt;
+            &lt;para&gt;Please note: this figure is not necessarily identical with the number of AssetItems.&lt;/para&gt;
+            &lt;para&gt;Both figures may differ, if Limit and/or StartRow are greater 0 in &lt;see cref="T:Asset.ExtendedAssetFilter" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortAssetItemCollection" nillable="true" type="tns:PortAssetItemCollection" />
+  <xs:complexType name="ArrayOfPortAssetItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PortAssetItem" nillable="true" type="tns:PortAssetItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortAssetItem" nillable="true" type="tns:ArrayOfPortAssetItem" />
+  <xs:complexType name="PortAssetItem">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An AssetItem represents the attributes of one asset including relations to other assets. The structure is built to be directly shwoed in web&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppliedAssetRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the asset right template.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AppliedAssetRightTemplateName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The translation of the asset right template in current user language.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset id.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetTypeId" nillable="true" type="q1:AssetType" />
+      <xs:element minOccurs="0" name="AssetTypeTranslation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Copyright" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset's further description (in most cases it'll be the field AssetDescription).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DownloadableDerivatives" nillable="true" type="tns:ArrayOfPortDerivative">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:PortDerivative" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;A derivative is an asset which has been created automatically by the system, e.g. a certain image format or a movie.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileExtension" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LargeThumbnailUrl" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListViewFields" nillable="true" type="q2:ArrayOfKeyValueOfintPortViewField6jg_STziK" />
+      <xs:element minOccurs="0" name="MediumThumbnailUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderableDerivatives" nillable="true" type="tns:ArrayOfPortDerivative">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array of &lt;see cref="T:PortDerivative" /&gt;s for this asset.&lt;/para&gt;
+            &lt;para&gt;A derivative is an asset which has been created automatically by the system, e.g. a certain image format or a movie.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OverlayText" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="OverviewFields" nillable="true" type="q3:ArrayOfKeyValueOfintPortViewField6jg_STziK" />
+      <xs:element minOccurs="0" name="SmallThumbnailUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset's sub title in more detailed views.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset's title which is used all over the new port (in most cases it'll be the field AssetName).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortAssetItem" nillable="true" type="tns:PortAssetItem" />
+  <xs:complexType name="ArrayOfPortDerivative">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PortDerivative" nillable="true" type="tns:PortDerivative" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPortDerivative" nillable="true" type="tns:ArrayOfPortDerivative" />
+  <xs:complexType name="PortDerivative">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A derivative is an asset which has been created automatically by the system, e.g. a certain image format or a movie.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="DerivativeDefinitionTranslation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DerivativeId" type="xs:int" />
+      <xs:element minOccurs="0" name="FileSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Height" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Use4Preview" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VersionOptionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VersionTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Width" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortDerivative" nillable="true" type="tns:PortDerivative" />
+  <xs:complexType name="PortViewField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFullWidth" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Position" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Values" nillable="true" type="q4:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PortViewField" nillable="true" type="tns:PortViewField" />
+</xs:schema>

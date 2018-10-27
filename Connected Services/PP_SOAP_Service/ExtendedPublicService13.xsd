@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.AssetContainer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" />
+  <xs:complexType name="AssetContainerAssignmentExtended">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AssetContainerAssignment">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetContainerType" type="q1:AssetContainerType" />
+          <xs:element minOccurs="0" name="ExclusivityGroupId" nillable="true" type="xs:int" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldSetIds" nillable="true" type="q2:ArrayOfint" />
+          <xs:element minOccurs="0" name="IconId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Indexes" nillable="true" type="tns:ArrayOfAssetContainerIndex" />
+          <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfAssetContainerTranslation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AssetContainerAssignmentExtended" nillable="true" type="tns:AssetContainerAssignmentExtended" />
+  <xs:complexType name="AssetContainerAssignment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="AssetId" type="xs:int" />
+      <xs:element minOccurs="0" name="FieldId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerAssignment" nillable="true" type="tns:AssetContainerAssignment" />
+  <xs:complexType name="ArrayOfAssetContainerIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerIndex" nillable="true" type="tns:AssetContainerIndex" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerIndex" nillable="true" type="tns:ArrayOfAssetContainerIndex" />
+  <xs:complexType name="AssetContainerIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AbsolutePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AbsolutePathById" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AssetContainerIndexId" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerIndex" nillable="true" type="tns:AssetContainerIndex" />
+  <xs:complexType name="ArrayOfAssetContainerTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerTranslation" nillable="true" type="tns:AssetContainerTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerTranslation" nillable="true" type="tns:ArrayOfAssetContainerTranslation" />
+  <xs:complexType name="AssetContainerTranslation">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Language specific data of one asset container. One item per asset container language.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="AssetContainerTranslationId" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset container description in the language defined by LanguageId.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LanguageId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The language id (1=german, 2=english, 3=french, 75=spanish, 140=italian, ..).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset container name in the language defined by LanguageId.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerTranslation" nillable="true" type="tns:AssetContainerTranslation" />
+  <xs:complexType name="ArrayOfAssetContainerAssignmentExtended">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerAssignmentExtended" nillable="true" type="tns:AssetContainerAssignmentExtended" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerAssignmentExtended" nillable="true" type="tns:ArrayOfAssetContainerAssignmentExtended" />
+  <xs:complexType name="ArrayOfAssetContainerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerItem" nillable="true" type="tns:AssetContainerItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerItem" nillable="true" type="tns:ArrayOfAssetContainerItem" />
+  <xs:complexType name="AssetContainerItem">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An AssetContainerItem represents the attributes of one asset container including relations to other asset containers.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppliedRightTemplateId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the applied right template.Is ignored, if IsRightTemplateOverridden = true&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetContainerId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the asset container.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AssetContainerName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset container name depends on the parameter desiredAssetContainerLanguage in &lt;see cref="M:FacadeServiceContract.IAssetContainerService.GetAssetContainers()" /&gt;.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetContainerType" type="q3:AssetContainerType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The asset container type, either Category or AssetClass.&lt;/para&gt;	
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Children" nillable="true" type="tns:ArrayOfAssetContainerItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with child AssetContainerItems.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreatedByUserId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the user who created the container.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" type="q4:DateTimeOffset">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The creation date.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExclusivityGroupId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of an exclusivity group.&lt;/para&gt;
+            &lt;para&gt;An exclusivity group is a list of mutually exclusive categories, e.g. countries or sex.&lt;/para&gt;
+            &lt;para&gt;In the case of countries an exclusivity group would prevent an asset to be assigned to more than one countries, in the case of sex it could be assigned to either male or female, but not to both.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FieldSetIds" nillable="true" type="q5:ArrayOfint">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;A list of assigned field set ids.&lt;/para&gt;
+            &lt;para&gt;FieldSetIds define which fields are assigned to an asset container. Needed for AssetClasses.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IconId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the icon used for the display of the asset container.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Indexes" nillable="true" type="tns:ArrayOfAssetContainerIndex">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with the indexes for each asset container language (contains the language specific absolute paths, e.g. "animals\pets\dogs\")&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsRightTemplateOverridden" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;If true, the applied right template is ignored and the rights particularly assigned to this asset container are applied.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q6:DateTimeOffset">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The modification date.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the last user who edited the container.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ParentAssetContainerId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The id of the parent asset containert, is null for containers on the highest level.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="Permissions" nillable="true" type="q7:ArrayOfAssetContainerRight">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with the &lt;see cref="T:AssetContainerRight" /&gt;s for the current user.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SortChildrenAlphabetically" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Flag: sort child nodes alphabetically.&lt;/para&gt;
+            &lt;para&gt;If true, child nodes are sorted alphabetically and sort order numbering is ignored.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SortOrder" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The relative sort order of siblings.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SubAssetContainers" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;The number of child nodes (children only, not grand children etc).&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfAssetContainerTranslation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;An array with the &lt;see cref="T:AssetContainerTranslation" /&gt;s (names and descriptions) for each asset container language.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerItem" nillable="true" type="tns:AssetContainerItem" />
+  <xs:complexType name="ArrayOfUserGroupAssetContainerRights">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGroupAssetContainerRights" nillable="true" type="tns:UserGroupAssetContainerRights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGroupAssetContainerRights" nillable="true" type="tns:ArrayOfUserGroupAssetContainerRights" />
+  <xs:complexType name="UserGroupAssetContainerRights">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PP.Common.DataContract" minOccurs="0" name="AssetContainerRights" nillable="true" type="q8:ArrayOfAssetContainerRight" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.UserGroup" minOccurs="0" name="UserGroup" nillable="true" type="q9:UserGroupItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGroupAssetContainerRights" nillable="true" type="tns:UserGroupAssetContainerRights" />
+  <xs:complexType name="ArrayOfAssetContainerTotalAssets">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AssetContainerTotalAssets" nillable="true" type="tns:AssetContainerTotalAssets" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssetContainerTotalAssets" nillable="true" type="tns:ArrayOfAssetContainerTotalAssets" />
+  <xs:complexType name="AssetContainerTotalAssets">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalAssets" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AssetContainerTotalAssets" nillable="true" type="tns:AssetContainerTotalAssets" />
+</xs:schema>

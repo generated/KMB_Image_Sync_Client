@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/VIT.Common.AvRendering.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VIT.Common.AvRendering.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfAudioStream">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AudioStream" nillable="true" type="tns:AudioStream" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAudioStream" nillable="true" type="tns:ArrayOfAudioStream" />
+  <xs:complexType name="AudioStream">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AudioBitRate" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioBitRateMode" type="tns:BitrateMode" />
+      <xs:element minOccurs="0" name="AudioChannelPositions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioChannels" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioCodec" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioDuration" type="ser:duration" />
+      <xs:element minOccurs="0" name="AudioFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AudioResolution" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioSamplingRate" type="xs:int" />
+      <xs:element minOccurs="0" name="AudioStreamSize" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AudioStream" nillable="true" type="tns:AudioStream" />
+  <xs:simpleType name="BitrateMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Variable" />
+      <xs:enumeration value="Constant" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BitrateMode" nillable="true" type="tns:BitrateMode" />
+  <xs:complexType name="ArrayOfVideoStream">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VideoStream" nillable="true" type="tns:VideoStream" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVideoStream" nillable="true" type="tns:ArrayOfVideoStream" />
+  <xs:complexType name="VideoStream">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="VideoBitRate" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoCodec" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoDisplayAspectRatio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoDuration" type="ser:duration" />
+      <xs:element minOccurs="0" name="VideoFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoFrameCount" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoFrameRate" type="xs:float" />
+      <xs:element minOccurs="0" name="VideoHeight" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VideoPixelAspectRatio" type="xs:float" />
+      <xs:element minOccurs="0" name="VideoResolution" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoRotation" type="xs:int" />
+      <xs:element minOccurs="0" name="VideoStreamSize" type="xs:long" />
+      <xs:element minOccurs="0" name="VideoWidth" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VideoStream" nillable="true" type="tns:VideoStream" />
+</xs:schema>

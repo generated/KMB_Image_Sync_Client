@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Publisher" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PP.Common.DataContract.Publisher" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://facade-ch02.picturepark.com/ExtendedPublicService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Skin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanManage" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CreatedByUserId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationDate" type="q1:DateTimeOffset" />
+      <xs:element minOccurs="0" name="CssSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HtmlSource" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ModificationDate" nillable="true" type="q2:DateTimeOffset" />
+      <xs:element minOccurs="0" name="ModifiedByUserId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NamesOfMappedSitesWithSiteRightManage" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SkinId" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalCountOfSiteMappings" type="xs:int" />
+      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Skin" nillable="true" type="tns:Skin" />
+</xs:schema>
