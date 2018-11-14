@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -87,6 +88,19 @@ namespace KMB_Image_Sync_Client
             catch (Exception ex)
             {
                 MessageBox.Show("Die Konfigurationsdatei ist fehlerhaft, bitte korrigiere den Fehler oder lösche die Datei um eine neue anzulegen.");
+                return false;
+            }
+
+            //check proxy parameters
+            try
+            {
+                var proxy = new WebProxy(ConfigurationManager.AppSettings["address"], true);
+                proxy.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["user"], ConfigurationManager.AppSettings["password"]);
+                WebRequest.DefaultWebProxy = proxy;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Die Proxy Parameter sind fehlerhaft, bitte prüfe die Angaben in KMB_Image_Sync_Client.exe.config");
                 return false;
             }
 
