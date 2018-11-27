@@ -13,3 +13,4 @@ C:\VS Projects\KMB\KMB_Image_Sync_Client\KMB_Image_Sync_Client\obj\Debug\KMB_Ima
 C:\VS Projects\KMB\KMB_Image_Sync_Client\KMB_Image_Sync_Client\obj\Debug\KMB_Image_Sync_Client.csproj.GenerateResource.Cache
 C:\VS Projects\KMB\KMB_Image_Sync_Client\KMB_Image_Sync_Client\obj\Debug\KMB_Image_Sync_Client.exe
 C:\VS Projects\KMB\KMB_Image_Sync_Client\KMB_Image_Sync_Client\obj\Debug\KMB_Image_Sync_Client.pdb
+C:\VS Projects\KMB\KMB_Image_Sync_Client\KMB_Image_Sync_Client\obj\Debug\KMB_Image_Sync_Client.csprojResolveAssemblyReference.cache

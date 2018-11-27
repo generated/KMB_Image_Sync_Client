@@ -1,0 +1,10 @@
+{
+  "ZielPfad": "PFAD_MIT_LOKALEN_ZU_ERSETZENDEN_BILDERN",
+  "ArchivPfad": "PFAD_WO_ERSETZTE_BILDER_ABGELEGT_WERDEN",
+  "LogPfad": "PFAD_WO_LOG_DATEIEN_ABGELEGT_WERDEN",
+  "LetzterAbgleich": "0001-01-01T00:00:00",
+  "PP_CustomerId": 0,
+  "PP_ClientGUID": "PP_CLIENT_GUID",
+  "PP_Email": "PP_EMAIL",
+  "PP_Password": "PP_PASSWORD"
+}

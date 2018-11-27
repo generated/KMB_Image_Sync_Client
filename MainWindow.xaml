@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KMB_Image_Sync_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="234.577" Width="525" ResizeMode="CanMinimize">
+        Title="MainWindow" Height="258.245" Width="525" ResizeMode="CanMinimize">
 
     <DockPanel LastChildFill="True">
 
@@ -23,9 +23,8 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
                     <!--0-->
-                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
                     <!--1-->
                     <RowDefinition/>
                     <!--2-->
@@ -33,16 +32,21 @@
                     <!--3-->
                     <RowDefinition/>
                     <!--4-->
+                    <RowDefinition Height="10"/>
+                    <!--4-->
+                    <RowDefinition/>
+
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Von: "/>
-                <DatePicker Name="fromDate" Grid.Row="0" Grid.Column="1" />
-                <TextBlock Grid.Row="2"  Grid.Column="0" Text="Bis: "/>
-                <DatePicker Name="toDate" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Zeitpanne erst ab Picturepark 9 auswählbar" />
+                <TextBlock Foreground="Gray" IsEnabled="False" Grid.Row="1" Grid.Column="0" Text="Von: " ToolTip="Erst in Picturepark 9 möglich" />
+                <DatePicker IsEnabled="False" Name="fromDateX" Grid.Row="1" Grid.Column="1" ToolTip="Erst in Picturepark 9 möglich" />
+                <TextBlock Foreground="Gray" IsEnabled="False" Grid.Row="3"  Grid.Column="0" Text="Bis: " ToolTip="Erst in Picturepark 9 möglich" />
+                <DatePicker IsEnabled="False" Name="toDateX" Grid.Row="3" Grid.Column="1" ToolTip="Erst in Picturepark 9 möglich" />
 
-                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Name="btnConfig" Grid.Row="4" Grid.Column="1" Width="100" Margin="0 0 10 0" Click="btnConfig_Click">Konfiguration</Button>
-                    <Button Name="btnStart" Grid.Row="4" Grid.Column="1" Width="100" Click="btnStart_Click">Start</Button>
+                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Name="btnConfig" Grid.Row="5" Grid.Column="1" Width="100" Margin="0 0 10 0" Click="btnConfig_Click">Konfiguration</Button>
+                    <Button Name="btnStart" Grid.Row="5" Grid.Column="1" Width="100" Click="btnStart_Click">Start</Button>
                 </StackPanel>
             </Grid>
         </StackPanel>
