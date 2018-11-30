@@ -173,7 +173,7 @@ namespace KMB_Image_Sync_Client
                     return;
 
                 //get all aproved assets in given timespan
-                if (!GetUncheckedAssets(alreadyCheckedAssets))
+                if (!GetReviewedAssets(alreadyCheckedAssets))
                     return;
 
                 //compare and synchronise images
@@ -282,15 +282,14 @@ namespace KMB_Image_Sync_Client
             return true;
         }
 
-        private static bool GetUncheckedAssets(List<string> alreadyCompared)
+        private static bool GetReviewedAssets(List<string> alreadyCompared)
         {
-            List<ComparisonOperation> orComparisonOperations = new List<ComparisonOperation>();
-
             ////DEBUG
+            //List<ComparisonOperation> orComparisonOperations = new List<ComparisonOperation>();
             //foreach (string tmp in tempcheck)
             //{
-            //    //StringEqualOperation asd = new StringEqualOperation() { FieldName = "OBJID", EqualString = "39894" };
-            //    StringEqualOperation asd = new StringEqualOperation() { FieldName = "AssetName", EqualString = tmp };
+            //    StringEqualOperation asd = new StringEqualOperation() { FieldName = "OBJID", EqualString = "39894" };
+            //  StringEqualOperation asd = new StringEqualOperation() { FieldName = "AssetName", EqualString = tmp };
             //    orComparisonOperations.Add(asd);
             //}
             //OrOperation orOperations = new OrOperation() { ComparisonOperations = orComparisonOperations.ToArray() };
@@ -304,8 +303,11 @@ namespace KMB_Image_Sync_Client
                 StringNotEqualOperation notEqualOperator = new StringNotEqualOperation() { FieldName = "AssetName", NotEqualString = ignoreAssets };
                 andComparisonOperations.Add(notEqualOperator);
             }
-            AndOperation andOperations = new AndOperation() { ComparisonOperations = andComparisonOperations.ToArray() };
 
+            StringEqualOperation contentApprovedFlag = new StringEqualOperation() { EqualString = "True", FieldName = "InhaltlichKontrolliert" };
+            andComparisonOperations.Add(contentApprovedFlag);
+
+            AndOperation andOperations = new AndOperation() { ComparisonOperations = andComparisonOperations.ToArray() };
 
             List<LogicalOperation> logicalOperations = new List<LogicalOperation>();
             logicalOperations.Add(andOperations);
@@ -314,7 +316,7 @@ namespace KMB_Image_Sync_Client
 
             ExtendedAssetFilter filter = new ExtendedAssetFilter()
             {
-                AdditionalSelectFields = new string[] { "AssetName", "OBJID", "FreigabeDatum", "MPlusLastUpdateDate" },
+                AdditionalSelectFields = new string[] { "AssetName", "OBJID", "FreigabeDatum", "InhaltlichKontrolliert" },
                 SearchOperation = searchOperations
             };
 
@@ -373,8 +375,8 @@ namespace KMB_Image_Sync_Client
             }
             else
             {
-                MessageBox.Show("Es gibt keine Werke mehr welche noch nicht geprüft wurden");
-                Log("Es gibt keine Werke mehr welche noch nicht geprüft wurden");
+                MessageBox.Show("Es gibt keine neu geprüften Werke");
+                Log("Es gibt keine neu geprüften Werke");
             }
 
             return false;
